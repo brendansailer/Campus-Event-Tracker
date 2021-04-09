@@ -1,0 +1,1 @@
+This directory stores the files for the creation of the database and test queries
