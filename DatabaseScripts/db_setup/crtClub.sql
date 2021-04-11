@@ -5,7 +5,7 @@ DROP SEQUENCE user_sequence;
 
 CREATE TABLE club (
     club_id NUMBER(10) NOT NULL,
-    club_name VARCHAR(100),
+    club_name VARCHAR(100) NOT NULL,
     club_description VARCHAR(100),
     CONSTRAINT user_pk PRIMARY KEY (club_id)
 );

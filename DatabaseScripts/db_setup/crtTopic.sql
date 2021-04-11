@@ -5,7 +5,7 @@ DROP SEQUENCE topic_sequence;
 
 CREATE TABLE topic (
     topic_id NUMBER(10) NOT NULL,
-    topic_description VARCHAR(100),
+    topic_description VARCHAR(100) NOT NULL,
     CONSTRAINT topic_pk PRIMARY KEY (topic_id)
 );
 
