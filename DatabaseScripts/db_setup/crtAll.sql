@@ -1,0 +1,9 @@
+@crtUser
+@crtClub
+@crtMember
+@crtTopic
+@crtClubtag
+@crtAnnounce
+@crtEvent
+@crtRsvp
+exit;
