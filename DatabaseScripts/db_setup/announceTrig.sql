@@ -6,6 +6,4 @@ BEGIN
     INTO :new.announcement_id
     FROM dual;
 END;
-
-EXIT;
 /

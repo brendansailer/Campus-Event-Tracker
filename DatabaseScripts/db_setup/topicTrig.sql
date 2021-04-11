@@ -6,6 +6,4 @@ BEGIN
     INTO :new.topic_id
     FROM dual;
 END;
-
-EXIT;
 /

@@ -1,6 +1,6 @@
 -- RSVP( user_id, event_id, likelihood )
 
-DROP TABLE rsvp;
+DROP TABLE rsvp CASCADE CONSTRAINTS;
 
 CREATE TABLE rsvp (
     user_id NUMBER(10) NOT NULL,

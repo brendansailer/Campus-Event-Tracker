@@ -6,6 +6,4 @@ BEGIN
     INTO :new.user_id
     FROM dual;
 END;
-
-EXIT;
 /

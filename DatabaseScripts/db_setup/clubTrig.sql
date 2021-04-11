@@ -6,6 +6,4 @@ BEGIN
     INTO :new.club_id
     FROM dual;
 END;
-
-EXIT;
 /

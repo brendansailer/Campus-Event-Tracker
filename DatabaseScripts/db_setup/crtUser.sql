@@ -1,6 +1,6 @@
 -- User( user_id, username, email, password )
 
-DROP TABLE appuser;
+DROP TABLE appuser CASCADE CONSTRAINTS;
 DROP SEQUENCE user_sequence;
 
 CREATE TABLE appuser (

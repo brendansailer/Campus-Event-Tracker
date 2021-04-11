@@ -1,6 +1,6 @@
 -- Topic( topic_id, description)
 
-DROP TABLE topic;
+DROP TABLE topic CASCADE CONSTRAINTS;
 DROP SEQUENCE topic_sequence;
 
 CREATE TABLE topic (

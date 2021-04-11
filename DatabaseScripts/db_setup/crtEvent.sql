@@ -1,6 +1,6 @@
 -- event( event_id, club_id, date, start_time, end_time, description, img_url )
 
-DROP TABLE appevent;
+DROP TABLE appevent CASCADE CONSTRAINTS;
 DROP SEQUENCE event_sequence;
 
 CREATE TABLE appevent (
@@ -10,8 +10,8 @@ CREATE TABLE appevent (
     event_end TIMESTAMP NOT NULL,
     event_description VARCHAR(100),
     img_url VARCHAR(100),
-    CONSTRAINT event_pk PRIMARY KEY (event_id)
-    CONSTRAINT club_fk
+    CONSTRAINT event_pk PRIMARY KEY (event_id),
+    CONSTRAINT club_fk_event
         FOREIGN KEY (club_id)
         REFERENCES club(club_id)
 );
