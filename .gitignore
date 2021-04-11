@@ -30,3 +30,6 @@ MANIFEST
 # Flask stuff:
 instance/
 .webassets-cache
+
+# Virtualenv
+env
