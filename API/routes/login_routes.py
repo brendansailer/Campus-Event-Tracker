@@ -1,9 +1,9 @@
 from flask import Blueprint
-from API.database_helpers import get_cursor
+from database_helpers import get_cursor
 
 login_api = Blueprint('login_api', __name__)
 
-@login_api.route('/login')
+@login_api.route('/login', methods=['GET'])
 def test():
     cur = get_cursor()
 
