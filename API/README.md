@@ -15,7 +15,7 @@ To Test:
 You also need to run this command to make the Oracle_cx library work (just add it to your bashrc and source it):
 export LD_LIBRARY_PATH=$ORACLE_HOME/lib
 
-Also make sure to have a database user with username project and password project:
+Also make sure to have a database user with username project and password password:
 - create user project identified by "password";
 - grant all privileges to project identified by password;
 
@@ -24,6 +24,6 @@ https://oracle.github.io/python-cx_Oracle/samples/tutorial/Python-and-Oracle-Dat
 
 Notes:
 - Schemas determine how an object is serialized (into JSON)
-- Use models to assign names to the fields returned by the query
+- Use models to assign names to the fields returned by the query (makes the Schema work)
 - NO semi-colons in sql strings
 - Do NOT run the API at the same time as sqlplus if you are doing an update statement as sometimes the rows can be locked and then the query hangs
