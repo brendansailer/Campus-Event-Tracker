@@ -3,10 +3,7 @@ from database_helpers import get_cursor
 
 main_api = Blueprint('main_api', __name__)
 
-@main_api.route('/main')
-def main():
-    return {"result": "success"}
-
+# Check if the API is alive
 @main_api.route('/test', methods=['GET'])
 def test():
     cur = get_cursor()
