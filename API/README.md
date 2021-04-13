@@ -26,4 +26,6 @@ Notes:
 - Schemas determine how an object is serialized (into JSON)
 - Use models to assign names to the fields returned by the query (makes the Schema work)
 - NO semi-colons in sql strings
-- Do NOT run the API at the same time as sqlplus if you are doing an update statement as sometimes the rows can be locked and then the query hangs
+
+Important:
+- Do NOT run the API at the same time as sqlplus if you are doing an update/insert statement as sometimes the rows can be locked and then the query hangs

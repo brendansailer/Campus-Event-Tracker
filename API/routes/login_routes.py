@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from database_helpers import get_cursor
+from database_helpers import get_cursor, get_connection
 
 login_api = Blueprint('login_api', __name__)
 
@@ -61,9 +61,9 @@ def reset_password():
         cur.close()
         return jsonify(result=False)
 
-# TODO - figure out why this doesn't work
 @login_api.route('/login/create', methods=['POST'])
 def create_account():
+    con = get_connection()
     cur = get_cursor()
 
     username = request.json['username']
@@ -76,7 +76,7 @@ def create_account():
     """
 
     cur.execute(sql, username=username, email=email, password=password)
-
+    con.commit()
     cur.close()
 
     return jsonify(result=True)

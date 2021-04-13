@@ -8,3 +8,6 @@ connection = cx_Oracle.connect(db_user, db_password, db_connect)
 
 def get_cursor():
     return connection.cursor()
+
+def get_connection():
+    return connection
