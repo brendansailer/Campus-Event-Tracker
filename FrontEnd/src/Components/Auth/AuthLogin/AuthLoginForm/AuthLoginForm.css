@@ -1,0 +1,48 @@
+.login-form{
+    width: 350px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.login-group{
+    margin-bottom: 10px;
+}
+
+.login-text{
+   background-color: #202020;
+   border-radius: 7px;
+   color: white;
+}
+
+.login-text, select, textarea{
+    color: white;
+}
+
+
+.login-text:focus{
+    background-color: #202020;
+}
+
+.login-text:focus,
+select,
+textarea {
+    color: white;
+}
+
+
+.login-button-group{
+    width: 100%;
+}
+
+.login-submit{
+    width: 100%;
+    border:none;
+}
+
+.login-submit:hover{
+    border:none;
+}
+
+
