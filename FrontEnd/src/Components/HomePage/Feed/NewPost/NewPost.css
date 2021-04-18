@@ -1,0 +1,42 @@
+
+.new-post-btn-container{
+    text-align: center;
+    margin-top: 10px;
+}
+
+.new-post-btn{
+    width: 50%;
+    border-radius: 20px;
+    border: none;
+}
+
+.new-post-btn:hover{
+    border:none;
+}
+
+
+
+.post-text-body{
+    background-color: #202020;
+}
+
+.post-text-body:focus {
+    background-color: #202020;
+}
+
+.post-text-body,
+select,
+textarea {
+    color: white;
+}
+
+.post-text-body:focus,
+select,
+textarea {
+    color: white;
+}
+
+.btn:hover{
+    border: none;
+}
+

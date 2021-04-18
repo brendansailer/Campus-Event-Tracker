@@ -1,0 +1,23 @@
+.user-profile{
+    background-color: #1F1F1F;
+    border-radius: 7px;
+}
+.profile-img {
+    display: block;
+    border-radius: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 20%;
+}
+
+.banner-username {
+    text-align: center;
+}
+
+.profile-body {
+    text-align: center;
+}
+
+.profile-body i {
+    margin-left: 5px;
+}

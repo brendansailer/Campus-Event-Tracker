@@ -1,0 +1,38 @@
+
+.article-title{
+    color: white;
+    font-size: 1.0em;
+    text-decoration: underline;
+    font-family: 'Poppins';
+}
+
+.article-title:hover{
+    color: #0275d8;
+    text-decoration: none;
+       text-decoration: underline;
+}
+
+.article-text{
+    width: 75%;
+}
+.article-text p{
+    color: grey;
+    font-size: small;
+    font-family: sans-serif;
+    font-weight:lighter
+}
+
+.article-item{
+    padding-left: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.article-image{
+    float: right;
+    max-width: 30%;
+    border-radius: 7px;
+    margin-right: 10px;
+}

@@ -1,0 +1,47 @@
+
+.profile-nav-container{
+    height: 100%;
+    padding: 10px;
+}
+
+
+.profile-user-container{
+    overflow: auto;
+    border-radius: 7px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+    height: 100vh;
+}
+
+
+/*Media Query for Mobile Devices*/
+@media (max-width: 875px) {
+     .profile-page-container {
+         height: 100vh;
+         width: 100vw;
+     }
+    .profile-grid-container {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        overflow: auto;
+    }
+}
+
+
+/*CSS Media Query for larger screens */
+@media (min-width:875px) {
+
+    .profile-page-container {
+        height: 100vh;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .profile-grid-container {
+        display: grid;
+        grid-template-columns: 300px 575px;
+    }
+}

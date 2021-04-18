@@ -1,0 +1,44 @@
+.register-form{
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+
+}
+
+.register-group{
+
+    width: 100%;
+}
+
+.register-group input{
+    background-color: #202020;
+    border-radius: 5px;
+    color: white;
+}
+
+.register-group input,
+select,
+textarea {
+    color: white;
+}
+
+
+.register-group input:focus {
+    background-color: #202020;
+}
+
+.register-group input:focus,
+select,
+textarea {
+    color: white;
+}
+
+.register-button{
+    width: 100%;
+    margin-top: 10px;
+}
+
+
