@@ -19,11 +19,11 @@ def login():
 
     cur.execute(sql, email=email, password=password)
 
-    user_id = cur.fetchone()[0] # Unpack the tuple returned by execute()
+    user_id = cur.fetchone()
     cur.close()
 
     if user_id: # User exists
-        return jsonify(result=True, user_id=user_id)
+        return jsonify(result=True, user_id=user_id[0]) # Unpack the tuple returned by execute()
     else:
         return jsonify(result=False, user_id=0)
 
