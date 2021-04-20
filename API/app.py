@@ -14,5 +14,5 @@ app.register_blueprint(event_api)
 app.register_blueprint(club_api)
 
 if __name__ == '__main__':
-    service_port = port=os.environ.get('PORT', '5000')
+    service_port = port=os.environ.get('PORT', '5050')
     app.run(host='0.0.0.0', port= int(service_port) )

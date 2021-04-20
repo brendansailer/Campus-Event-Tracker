@@ -1,5 +1,4 @@
 import Parse from "parse";
-// import { useReducer } from "react";
 
 export const createUser = (newUser) => {
   const user = new Parse.User();
