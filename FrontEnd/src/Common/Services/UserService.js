@@ -10,16 +10,6 @@ export const getUser = (id) => {
   });
 };
 
-// READ ACTION - get all suggester users
-export const getSuggested = () => {
-  const Users = Parse.Object.extend("User");
-  const query = new Parse.Query(Users);
-  return query.find().then((results) => {
-    // returns array of user objects
-    return results.slice(0, 4);
-  });
-};
-
 // DELETE ACTION - remove user by ID
 export const removeUserById = (id) => {
   const User = Parse.Object.extend("User");

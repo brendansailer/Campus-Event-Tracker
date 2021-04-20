@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import AuthRegisterForm from "./AuthRegisterForm/AuthRegisterForm";
 import { createUser } from "../../../Common/Services/AuthService";
 import { useHistory } from "react-router";
-import { createUserFollow } from "../../../Common/Services/FollowService";
 
 const AuthRegister = () => {
   const history = useHistory();
@@ -23,7 +22,6 @@ const AuthRegister = () => {
     if (newUser && add) {
       createUser(newUser).then((userCreated) => {
         if (userCreated) {
-          createUserFollow(userCreated.id);
           console.log(
             `${userCreated.get("firstName")}, you successfully registered.`
           );

@@ -1,25 +1,35 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { listUserPosts } from "../../../Common/Services/PostService";
-import NewPost from "./NewPost/NewPost.js";
-import Post from "./Post.js";
+// import NewEvent from "./NewEvent/NewEvent.js";
+import Event from "./Event.js";
 import "./Feed.css";
 import { getCurrentUser } from "../../../Common/Services/AuthService";
 
 export default function Feed() {
-  const [posts, setPosts] = useState([]);
+  const [events, setEvents] = useState([]);
   var currentUser = getCurrentUser();
   useEffect(() => {
-    listUserPosts().then((userPosts) => {
-      setPosts(userPosts.reverse());
-    });
+    fetch('/event', {
+      method: 'GET', // *GET, POST, PUT, DELETE, etc.
+      mode: 'cors', // no-cors, *cors, same-origin
+      cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+      credentials: 'same-origin', // include, *same-origin, omit
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      redirect: 'follow', // manual, *follow, error
+      referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+    }).then(response => response.json()).then(data => {
+        console.log(data)
+        setEvents(data)
+    })
   }, []);
 
-  const refreshFeed = () => {
-    listUserPosts().then((userPosts) => {
-      setPosts(userPosts.reverse());
-    });
-  };
+  // const refreshFeed = () => {
+  //   listUserEvents().then((userEvents) => {
+  //     setEvents(userEvents.reverse());
+  //   });
+  // };
 
   return (
     <div className="feed">
@@ -28,14 +38,15 @@ export default function Feed() {
           {"Welcome, " + currentUser.get("firstName")}{" "}
         </h2>
       </div>
-      <NewPost refreshFeed={refreshFeed} />
-      <div className="post-info-container">
-        {posts.map((post) => (
-          <Post
-            key={post.id}
-            username={post.get("user").get("username")}
-            profileImage={post.get("user").get("profile_image")}
-            body={post.get("content")}
+      {/* <NewEvent refreshFeed={refreshFeed} /> */}
+      <div className="event-info-container">
+        {events.map((event) => (
+          <Event
+            key={event.event_id}
+            description={event.event_description}
+            club={event.club_id}
+            event_img={event.event_img}
+            event_start={event.start_time}
           />
         ))}
       </div>

@@ -1,12 +1,11 @@
-import "./UserConnect.css";
-function UserConnect({ firstName, lastName, picture }) {
-  console.log(picture);
+import "./ClubSubscribe.css";
+function ClubSubscribe({ key, description }) {
   return (
     <li className="user">
       <div className="image-name">
-        <img className="image" src={picture._url} alt="profile"></img>
+        {/* <img className="image" src={picture._url} alt="profile"></img> */}
         <p style={{ marginLeft: "0.5rem" }} className="name">
-          {firstName} {lastName}
+          {description}
         </p>
       </div>
       <button className="btn btn-outline-primary">Connect</button>
@@ -14,4 +13,4 @@ function UserConnect({ firstName, lastName, picture }) {
   );
 }
 
-export default UserConnect;
+export default ClubSubscribe;

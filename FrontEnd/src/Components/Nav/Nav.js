@@ -1,5 +1,7 @@
 import { Link, useHistory } from "react-router-dom";
 import { logoutUser, getCurrentUser } from "../../Common/Services/AuthService";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCalendarCheck } from '@fortawesome/free-solid-svg-icons'
 import "./Nav.css";
 import Logout from "./Logout/Logout";
 import Login from "./Login/Login";
@@ -18,14 +20,11 @@ const Nav = () => {
   return (
     <div className="nav">
       <div className="nav-items">
-        <h1>
+        <h1 style={{ color: "#057BFE", paddingRight: "10px" }}>
           <span style={{ color: "#057BFE", paddingRight: "10px" }}>
-            BitParty
+            eveNDts
           </span>
-          <i
-            className="fa fa-gamepad"
-            style={{ color: "#057BFE", paddingRight: "10px" }}
-          ></i>
+          <FontAwesomeIcon icon={faCalendarCheck} />
         </h1>
         {getCurrentUser() &&
           <ul className="nav-list">

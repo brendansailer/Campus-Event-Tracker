@@ -1,6 +1,6 @@
-import FriendSuggestions from './FriendSuggestions/FriendSuggestions.js';
 import TodaysNews from './TodaysNews/TodaysNews';
 import './Discover.css';
+import ClubSuggestions from './ClubSuggestions/ClubSuggestions.js';
 
 function Discover() {
   //The html to be rendered for the Discover module
@@ -9,8 +9,8 @@ function Discover() {
         <div className="news">
             <TodaysNews></TodaysNews>
         </div>
-        <div className="friend-suggestions">
-            <FriendSuggestions></FriendSuggestions>
+        <div className="club-suggestions">
+            <ClubSuggestions></ClubSuggestions>
         </div>
     </div>
   );
