@@ -1,12 +1,14 @@
 from flask import Blueprint, request, jsonify
-from database_helpers import get_cursor
+from database_helpers import get_cursor, get_connection
 from schemas.event_schema import event_schema
 from models.event_model import Event  
+from schemas.rsvp_schema import rsvp_schema
+from models.rsvp_model import RSVP
 
 event_api = Blueprint('event_api', __name__)
 
 @event_api.route('/event', methods=['GET'])
-def events():
+def get_events():
     cur = get_cursor()
 
     sql = """SELECT * FROM appevent"""
@@ -18,4 +20,60 @@ def events():
 
     events = [Event(*event) for event in tuples] # Take the tuples and create Event models which can be serialized by the Event schema
 
-    return event_schema.jsonify(events)
+    return event_schema.jsonify(events, many=True) # Create an array of these events
+
+@event_api.route('/event/<id>', methods=['GET'])
+def get_event(id):
+    cur = get_cursor()
+
+    sql = """SELECT * FROM appevent WHERE event_id = :id"""
+
+    cur.execute(sql, id=id)
+    event = cur.fetchone()
+
+    cur.close()
+
+    if not event:
+        return {"result": "Event does not exist"}
+    else:
+        return event_schema.jsonify(Event(*event))
+
+@event_api.route('/event/rsvp', methods=['POST'])
+def rsvp():
+    con = get_connection()
+    cur = get_cursor()
+
+    # Get fields from the POST request
+    user_id = request.json['user_id']
+    event_id = request.json['event_id']
+    likelihood = request.json['likelihood']
+
+    sql = """
+        INSERT INTO rsvp(user_id, event_id, likelihood)
+        values (:user_id, :event_id, :likelihood)
+    """
+
+    cur.execute(sql, user_id=user_id, event_id=event_id, likelihood=likelihood)
+    con.commit()
+    cur.close()
+
+    return jsonify(result=True)
+
+@event_api.route('/event/subscribed/<id>', methods=['GET'])
+def get_rsvps(id):
+    cur = get_cursor()
+
+    sql = """SELECT * FROM RSVP WHERE user_id = :id"""
+
+    cur.execute(sql, id=id)
+    tuples = cur.fetchmany()
+
+    cur.close()
+
+    rsvps = [RSVP(*rsvp) for rsvp in tuples] # Take the tuples and create Event models which can be serialized by the Event schema
+
+    if not tuples:
+        return {"result": "User does not exist"}
+    else:
+        print(rsvps)
+        return rsvp_schema.jsonify(rsvps, many=True)

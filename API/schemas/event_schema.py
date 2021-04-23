@@ -6,4 +6,4 @@ class EventSchema(ma.Schema):
     fields = ('event_id', 'club_id', 'start_time', 'end_time', 'event_description', 'img_url')
 
 # Init schema
-event_schema = EventSchema(many=True) # Create an array of these events
+event_schema = EventSchema()
