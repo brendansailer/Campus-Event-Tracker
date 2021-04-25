@@ -34,6 +34,12 @@ const Nav = () => {
                 <span className="nav-text">Home</span>
               </Link>
             </li>
+            <li>
+              <Link to={"/explore/" + getCurrentUser().id}>
+                <i style={{ marginRight: "9px" }} className="fa fa-user"></i>
+                <span className="nav-text">Explore</span>
+              </Link>
+            </li>
               <li>
                 <Link to={"/profile/" + getCurrentUser().id}>
                   <i style={{ marginRight: "9px" }} className="fa fa-user"></i>

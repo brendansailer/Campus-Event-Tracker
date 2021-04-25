@@ -1,4 +1,5 @@
 import HomePageModule from "./HomePage/HomePage";
+import ExplorePageModule from "./ExplorePage/ExplorePage"
 import ProfilePageModule from "./ProfilePage/ProfilePage";
 import ProtectedUpdateProfilePageModule from "../Common/ProtectedRoutes/UpdateProfileRoute";
 import UpdateProfilePageModule from "./UpdateProfile/UpdateProfile";
@@ -26,6 +27,7 @@ const Components = () => {
           component={UpdateProfilePageModule}
         />
         <Route path="/profile/:userId" component={ProfilePageModule} />
+        <Route path="/explore/:userId" component={ExplorePageModule} />
         <Route path="/home-auth" component={ProtectedHomeRouteModule} />
         <Route path="/home/:userId" component={HomePageModule} />
         <Route path="/register" exact component={AuthRegister} />
