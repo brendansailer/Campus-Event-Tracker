@@ -1,6 +1,5 @@
 import React from "react";
 import { useEffect, useState } from "react";
-// import NewEvent from "./NewEvent/NewEvent.js";
 import Event from "./Event.js";
 import "./Feed.css";
 import { getCurrentUser } from "../../../Common/Services/AuthService";
@@ -25,12 +24,6 @@ export default function Feed() {
     })
   }, []);
 
-  // const refreshFeed = () => {
-  //   listUserEvents().then((userEvents) => {
-  //     setEvents(userEvents.reverse());
-  //   });
-  // };
-
   return (
     <div className="feed">
       <div>
@@ -38,7 +31,6 @@ export default function Feed() {
           {"Welcome, " + currentUser.get("firstName")}{" "}
         </h2>
       </div>
-      {/* <NewEvent refreshFeed={refreshFeed} /> */}
       <div className="event-info-container">
         {events.map((event) => (
           <Event
@@ -47,6 +39,7 @@ export default function Feed() {
             club={event.club_id}
             event_img={event.event_img}
             event_start={event.start_time}
+            club_name={event.club_name}
           />
         ))}
       </div>

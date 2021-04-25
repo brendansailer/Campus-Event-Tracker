@@ -11,7 +11,11 @@ event_api = Blueprint('event_api', __name__)
 def get_events():
     cur = get_cursor()
 
-    sql = """SELECT * FROM appevent"""
+    sql = """
+            SELECT e.event_id, e.club_id, e.event_start, e.event_end, e.event_description, e.img_url, c.club_name
+            FROM appevent e
+            JOIN club c on c.club_id = e.club_id
+          """
 
     cur.execute(sql)
     tuples = cur.fetchmany()
@@ -26,7 +30,12 @@ def get_events():
 def get_event(id):
     cur = get_cursor()
 
-    sql = """SELECT * FROM appevent WHERE event_id = :id"""
+    sql = """
+            SELECT e.event_id, e.club_id, e.event_start, e.event_end, e.event_description, e.img_url, c.club_name
+            FROM appevent e
+            JOIN club c on c.club_id = e.club_id
+            WHERE event_id = :id
+        """
 
     cur.execute(sql, id=id)
     event = cur.fetchone()

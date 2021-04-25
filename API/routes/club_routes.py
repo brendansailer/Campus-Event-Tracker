@@ -121,7 +121,10 @@ def get_events(id):
     cur = get_cursor()
 
     sql = """
-        SELECT * FROM appevent WHERE club_id = :id
+        SELECT e.event_id, e.club_id, e.event_start, e.event_end, e.event_description, e.img_url, c.club_name
+        FROM appevent e
+        JOIN club c on c.club_id = e.club_id
+        WHERE e.club_id = :id
     """
 
     cur.execute(sql, id=id)
