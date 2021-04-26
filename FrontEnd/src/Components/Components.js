@@ -5,6 +5,8 @@ import ProtectedUpdateProfilePageModule from "../Common/ProtectedRoutes/UpdatePr
 import UpdateProfilePageModule from "./UpdateProfile/UpdateProfile";
 import AuthModule from "./Auth/Auth";
 import ProtectedHomeRouteModule from "../Common/ProtectedRoutes/ProtectedHomeRoute";
+import IndividualEventPage from "./IndividualEventPage/IndividualEventPage";
+import IndividualClubPage from "./IndividualClubPage/IndividualClubPage";
 
 import {
   BrowserRouter as Router,
@@ -32,6 +34,8 @@ const Components = () => {
         <Route path="/home/:userId" component={HomePageModule} />
         <Route path="/register" exact component={AuthRegister} />
         <Route path="/login" component={AuthModule} />
+        <Route path="/event/:eventId" component={IndividualEventPage} />
+        <Route path="/club/:clubId" component={IndividualClubPage} />
         <Redirect to="/login" />
       </Switch>
     </Router>

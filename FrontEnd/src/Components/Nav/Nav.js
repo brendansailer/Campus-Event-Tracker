@@ -36,7 +36,7 @@ const Nav = () => {
             </li>
             <li>
               <Link to={"/explore/" + getCurrentUser().id}>
-                <i style={{ marginRight: "9px" }} className="fa fa-user"></i>
+                <i style={{ marginRight: "9px" }} className="fa fa-compass"></i>
                 <span className="nav-text">Explore</span>
               </Link>
             </li>
