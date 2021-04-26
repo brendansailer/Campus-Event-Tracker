@@ -13,3 +13,4 @@ class ClubSchema(ma.Schema):
 
 # Init schema
 club_schema = ClubSchema(many=True)
+individual_club_schema = IndividualClubSchema(many=True)

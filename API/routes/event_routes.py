@@ -47,6 +47,26 @@ def get_event(id):
     else:
         return event_schema.jsonify(Event(*event))
 
+@event_api.route('/event/random', methods=['GET'])
+def get_event_random():
+    cur = get_cursor()
+
+    sql = """
+            SELECT * FROM
+            (SELECT e.event_id, e.club_id, e.event_start, e.event_end, e.event_description, e.img_url, c.club_name
+            FROM appevent e
+            JOIN club c on c.club_id = e.club_id
+            ORDER BY dbms_random.value)
+            WHERE ROWNUM <= 3
+        """
+     
+    cur.execute(sql)
+    events = cur.fetchmany()
+
+    cur.close()
+
+    return event_schema.jsonify([Event(*event) for event in events], many=True)
+
 @event_api.route('/event/rsvp', methods=['POST'])
 def rsvp():
     con = get_connection()
