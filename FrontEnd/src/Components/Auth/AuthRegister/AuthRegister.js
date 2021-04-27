@@ -22,10 +22,10 @@ const AuthRegister = () => {
     if (newUser && add) {
       createUser(newUser).then((userCreated) => {
         if (userCreated) {
-          console.log(
-            `${userCreated.get("firstName")}, you successfully registered.`
-          );
-          console.log(userCreated);
+          // console.log(
+          //   `${userCreated.get("firstName")}, you successfully registered.`
+          // );
+          // console.log(userCreated);
           history.push("/home-auth");
         }
       });

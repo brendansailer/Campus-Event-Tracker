@@ -8,16 +8,16 @@ def login():
     cur = get_cursor()
 
     # Get fields from the POST request
-    password = request.json['password']
+    username = request.json['username']
     email = request.json['email']
 
     sql = """
         SELECT user_id
         FROM appuser u
-        WHERE u.email = :email and u.pass = :password
+        WHERE u.email = :email and u.username = :username
     """
 
-    cur.execute(sql, email=email, password=password)
+    cur.execute(sql, email=email, username=username)
 
     user_id = cur.fetchone()
     cur.close()

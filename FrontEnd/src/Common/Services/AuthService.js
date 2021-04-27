@@ -1,4 +1,5 @@
 import Parse from "parse";
+import { createDBUser } from "./UserService";
 
 export const createUser = (newUser) => {
   const user = new Parse.User();
@@ -11,6 +12,7 @@ export const createUser = (newUser) => {
 
   return user
     .signUp()
+    .then(createDBUser(newUser))
     .then((newUserSaved) => {
       return newUserSaved;
     })
