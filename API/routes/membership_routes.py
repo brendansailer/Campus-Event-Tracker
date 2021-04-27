@@ -5,11 +5,9 @@ from models.membership_model import Membership
 
 membership_api = Blueprint('membership_api', __name__)
 
-@membership_api.route('/membership', methods=['GET'])
-def get_subscriptions():
+@membership_api.route('/membership/<user_id>', methods=['GET'])
+def get_subscriptions(user_id):
     cur = get_cursor()
-
-    user_id = request.json['user_id']
 
     sql = """SELECT m.club_id, c.club_name, c.club_description
             FROM membership m

@@ -1,5 +1,5 @@
 import React from "react";
-import UserFeed from "./UserFeed";
+import UserSubscriptions from "./UserSubscriptions";
 import UserBanner from "./UserBanner";
 import { useParams } from "react-router-dom";
 // import "./UserProfile.css"
@@ -10,7 +10,7 @@ export default function UserProfile() {
   return (
     <div className="user-profile">
       <UserBanner userId={userId}></UserBanner>
-      <UserFeed userId={userId}></UserFeed>
+      <UserSubscriptions userId={userId}></UserSubscriptions>
     </div>
   );
 }

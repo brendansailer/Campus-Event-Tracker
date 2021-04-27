@@ -1,6 +1,6 @@
-import Article from "./article/Article";
-import { useState, useEffect } from "react";
-import "./style.css";
+// import Article from "./article/Article";
+// import { useState, useEffect } from "react";
+// import "./style.css";
 
 function TodaysNews() {
   // //set up the state
