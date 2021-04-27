@@ -11,7 +11,7 @@ export default function Event(props) {
         <h3 className="event-time">{props.event_start}</h3>
       </div>
       <p className="event-text">{props.description}</p>
-      <Link to={"/event/" + props.event_id}> Go event page </Link>
+      <Link className="event-link" to={"/event/" + props.event_id}> Go event page </Link>
     </div>
   );
 }
