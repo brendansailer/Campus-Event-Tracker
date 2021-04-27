@@ -1,6 +1,7 @@
 import Nav from "../Nav/Nav";
 import "./IndividualClubPage.css";
 import Feed from "./Feed/Feed";
+import Announcements from "./Announcements/Announcements"
 import React from "react";
 import { useHistory } from "react-router";
 import { getCurrentUser } from "../../Common/Services/AuthService";
@@ -26,7 +27,9 @@ function IndividualClubPage(props) {
           />
         </div>
         <div className="club-discover-container">
-          <p>TODO</p>
+          <Announcements
+            clubId = {props.match.params.clubId}
+          />
         </div>
       </div>
     </div>

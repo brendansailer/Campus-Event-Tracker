@@ -62,7 +62,7 @@ def get_random_clubs():
 
     return individual_club_schema.jsonify([Club(*club) for club in clubs])
 
-@club_api.route('/club/annoucement/<id>', methods=['GET'])
+@club_api.route('/club/announcement/<id>', methods=['GET'])
 def get_announcements(id):
     cur = get_cursor()
 
@@ -77,7 +77,7 @@ def get_announcements(id):
 
     return announcement_schema.jsonify([Announcement(*ann) for ann in announcements], many=True)
 
-@club_api.route('/club/annoucement/create', methods=['POST'])
+@club_api.route('/club/announcement/create', methods=['POST'])
 def create_announcement():
     con = get_connection()
     cur = get_cursor()
