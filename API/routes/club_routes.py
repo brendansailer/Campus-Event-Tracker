@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify
 from database_helpers import get_cursor, get_connection
 import cx_Oracle
-from schemas.club_schema import club_schema, individual_club_schema
+from schemas.club_schema import club_schema, individual_club_schema, single_club_schema
 from models.club_model import Club
 from schemas.announcement_schema import announcement_schema
 from models.announcement_model import Announcement
@@ -117,6 +117,24 @@ def get_events(id):
     cur.close()
 
     return event_schema.jsonify([Event(*event) for event in tuples], many=True) # Create an array of these events
+
+@club_api.route('/club/<club_id>', methods=['GET'])
+def get_club(club_id):
+    cur = get_cursor()
+    
+    sql = """
+            SELECT * FROM club
+            WHERE club_id = :club_id
+        """
+
+    cur.execute(sql, club_id=club_id)
+    club = cur.fetchone()    
+    cur.close()
+
+    if not club:
+        return {"result": "Club does not exist"}
+    else:
+        return single_club_schema.jsonify(Club(*club)) 
 
 @club_api.route('/club/event/create', methods=['POST'])
 def create_event():
