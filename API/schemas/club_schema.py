@@ -14,3 +14,5 @@ class ClubSchema(ma.Schema):
 # Init schema
 club_schema = ClubSchema(many=True)
 individual_club_schema = IndividualClubSchema(many=True)
+# the individual schema didn't seem to work for individual objects so I made my own
+single_club_schema = IndividualClubSchema()
