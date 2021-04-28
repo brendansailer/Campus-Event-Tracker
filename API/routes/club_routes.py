@@ -10,6 +10,21 @@ from models.event_model import Event
 
 club_api = Blueprint('club_api', __name__)
 
+@club_api.route('/club', methods=['GET'])
+def get_random_clubs():
+    cur = get_cursor()
+    
+    sql = """
+            SELECT * FROM club
+        """
+
+    cur.execute(sql)
+    clubs = cur.fetchmany()
+    
+    cur.close()
+
+    return individual_club_schema.jsonify([Club(*club) for club in clubs])
+
 @club_api.route('/club/create', methods=['POST'])
 def create_club():
     con = get_connection()
