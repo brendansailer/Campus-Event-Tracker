@@ -11,7 +11,7 @@ from models.event_model import Event
 club_api = Blueprint('club_api', __name__)
 
 @club_api.route('/club', methods=['GET'])
-def get_random_clubs():
+def get_clubs():
     cur = get_cursor()
     
     sql = """
