@@ -1,8 +1,9 @@
 from flask import Blueprint, request, jsonify
 from database_helpers import get_cursor, get_connection
 import cx_Oracle
-from schemas.club_schema import club_schema, individual_club_schema, single_club_schema
+from schemas.club_schema import club_schema, individual_club_schema, single_club_schema, club_member_schema
 from models.club_model import Club
+from models.club_user_model import ClubUser
 from schemas.announcement_schema import announcement_schema
 from models.announcement_model import Announcement
 from schemas.event_schema import event_schema
@@ -24,6 +25,30 @@ def get_clubs():
     cur.close()
 
     return individual_club_schema.jsonify([Club(*club) for club in clubs])
+
+@club_api.route('/clubs/<id>', methods=['GET'])
+def get_personal_clubs(id):
+    cur = get_cursor()
+
+    sql = """
+        SELECT club.club_id, club.club_description, club.club_name, 1
+        FROM club, membership
+        WHERE membership.user_id = :id AND membership.club_id = club.club_id
+        UNION
+        SELECT club.club_id, club.club_description, club.club_name, 0
+        FROM club
+        WHERE club.club_id NOT IN 
+            (SELECT membership.club_id 
+            FROM membership 
+            WHERE membership.user_id = :id)
+    """
+
+    cur.execute(sql, id=id)
+    clubs = cur.fetchmany()
+
+    cur.close()
+
+    return club_member_schema.jsonify([ClubUser(*club) for club in clubs])
 
 @club_api.route('/club/create', methods=['POST'])
 def create_club():

@@ -3,13 +3,13 @@ import { useEffect, useState } from "react";
 // import NewEvent from "./NewEvent/NewEvent.js";
 import Club from "./Club.js";
 import "./Feed.css";
-//import { getCurrentUser } from "../../../Common/Services/AuthService";
+import { getCurrentUser } from "../../../Common/Services/AuthService";
 
 export default function Feed() {
   const [clubs, setClubs] = useState([]);
   //var currentUser = getCurrentUser();
   useEffect(() => {
-    fetch('/club', {
+    fetch('/clubs/' + getCurrentUser().id, {
       method: 'GET', // *GET, POST, PUT, DELETE, etc.
       mode: 'cors', // no-cors, *cors, same-origin
       cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached

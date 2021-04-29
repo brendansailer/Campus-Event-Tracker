@@ -4,7 +4,7 @@ import ClubFeed from "./Feed/Feed";
 import { useHistory, useParams } from "react-router";
 import { getCurrentUser } from "../../Common/Services/AuthService";
 
-function HomePage() {
+function AllClubs() {
   const { userId } = useParams();
   const history = useHistory();
   if (!getCurrentUser()) {
@@ -18,7 +18,7 @@ function HomePage() {
     return null;
   }
 
-  //Html to be rendered for the HomePage
+  //Html to be rendered for the AllClubs
   return (
     <div className="page">
       <div className="grid-container">
@@ -34,4 +34,4 @@ function HomePage() {
   );
 }
 
-export default HomePage;
+export default AllClubs;
