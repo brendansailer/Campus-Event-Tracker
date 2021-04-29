@@ -32,6 +32,11 @@ def get_personal_clubs(id):
 
     sql = """
         SELECT club.club_id, club.club_description, club.club_name, 1
+        FROM club;
+    """
+    
+    """
+        SELECT club.club_id, club.club_description, club.club_name, 1
         FROM club, membership
         WHERE membership.user_id = :id AND membership.club_id = club.club_id
         UNION
