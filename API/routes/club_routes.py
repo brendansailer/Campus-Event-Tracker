@@ -105,7 +105,7 @@ def get_events(id):
     cur = get_cursor()
 
     sql = """
-        SELECT e.event_id, e.club_id, e.event_start, e.event_end, e.event_description, e.img_url, c.club_name
+        SELECT e.event_id, e.club_id, TO_CHAR(e.event_start, 'HH:MI PM DY MON DD'), TO_CHAR(e.event_end, 'HH:MI PM DY MON DD'), e.event_description, e.img_url, c.club_name
         FROM appevent e
         JOIN club c on c.club_id = e.club_id
         WHERE e.club_id = :id
