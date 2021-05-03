@@ -46,6 +46,12 @@ const Nav = () => {
                   <span className="nav-text">Profile</span>
                 </Link>
               </li>
+              <li>
+                <Link to={"/clubs/" + getCurrentUser().id}>
+                  <i style={{ marginRight: "9px" }} className="fa fa-users"></i>
+                  <span className="nav-text">All Clubs</span>
+                </Link>
+              </li>
           </ul>
         }   
         {getCurrentUser() ?
