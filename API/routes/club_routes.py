@@ -34,12 +34,6 @@ def get_personal_clubs(id):
         SELECT club.club_id, club.club_description, club.club_name, 1
         FROM club, membership
         WHERE membership.user_id = :user_id AND membership.club_id = club.club_id
-    """
-    
-    """
-        SELECT club.club_id, club.club_description, club.club_name, 1
-        FROM club, membership
-        WHERE membership.user_id = :user_id AND membership.club_id = club.club_id
         UNION
         SELECT club.club_id, club.club_description, club.club_name, 0
         FROM club

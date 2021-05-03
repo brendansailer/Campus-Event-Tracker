@@ -12,3 +12,4 @@ class TopicSchema(ma.Schema):
 
 # Init schema
 topic_schema = TopicSchema() # Create an array of these topics
+individual_topic_schema = IndividualTopicSchema(many=True)
