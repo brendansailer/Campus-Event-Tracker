@@ -26,7 +26,7 @@ export default function Feed() {
     <div className="feed">
       <div>
         <h2 className="feed-header">
-          {"This Week's Events"}{" "}
+          {"Events Around Campus"}{" "}
         </h2>
       </div>
       <div className="event-info-container">
@@ -37,6 +37,7 @@ export default function Feed() {
             club_id={event.club_id}
             event_img={event.event_img}
             event_start={event.start_time}
+            event_end={event.end_time}
             club_name={event.club_name}
             event_id={event.event_id}
           />
