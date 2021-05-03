@@ -52,6 +52,7 @@ export default function Feed() {
         {clubs.map((club) => (
           <Club
             key={club.club_id}
+            club_id={club.club_id}
             description={club.club_description}
             name={club.club_name}
             member={club.club_member}

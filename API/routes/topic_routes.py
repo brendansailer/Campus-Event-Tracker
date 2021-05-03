@@ -47,7 +47,7 @@ def get_topic_from_club(club):
     sql = """
         SELECT topic.topic_id, topic.topic_description
         FROM topic, club_tag
-        WHERE topic.topic_id = club_tag.club_id AND club_tag.club_id = :club
+        WHERE topic.topic_id = club_tag.topic_id AND club_tag.club_id = :club
     """
 
     cur.execute(sql, club=club)
