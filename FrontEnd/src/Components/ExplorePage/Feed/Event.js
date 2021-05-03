@@ -10,6 +10,9 @@ export default function Event(props) {
         <h2 className="event-club"><Link to={"/club/" + props.club_id}> {props.club_name} </Link></h2>
         <h3 className="event-time">{props.event_start}</h3>
       </div>
+      <div className="event-info">
+        <h3 className="event-time">{props.event_end}</h3>
+      </div>
       <p className="event-text">{props.description}</p>
       <Link className="event-link" to={"/event/" + props.event_id}> Go event page </Link>
     </div>
