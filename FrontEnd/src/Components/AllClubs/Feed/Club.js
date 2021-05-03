@@ -12,7 +12,6 @@ function MemberHtml(props) {
 }
 
 export default function Club(props) {
-  // const date = new Date(props.event_start);
   let clubId = props.club_id;
   const [topics, setTopics] = useState([]);
 

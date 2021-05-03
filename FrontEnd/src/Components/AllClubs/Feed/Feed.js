@@ -4,14 +4,12 @@ import { useEffect, useState } from "react";
 import Club from "./Club.js";
 import "./Feed.css";
 import { getCurrentUser } from "../../../Common/Services/AuthService";
-import { getUserSubscriptions } from "../../../Common/Services/SubscriptionService";
+//import { getUserSubscriptions } from "../../../Common/Services/SubscriptionService";
 import { getDBUser } from "../../../Common/Services/UserService";
 
 export default function Feed() {
   const [clubs, setClubs] = useState([]);
   var currentUser = getCurrentUser();
-  const [subscriptions, setSubscriptions] = useState([]);
-  //const [dbUser, setDbUser] = useState({});
 
   useEffect(() => {
     getDBUser(currentUser.get("username"), currentUser.get("email"))
@@ -31,11 +29,6 @@ export default function Feed() {
             console.log(data)
             setClubs(data)
         })
-        //setDbUser(user)
-        return getUserSubscriptions(user.user_id)
-      })
-      .then((userSubscriptions) => {
-        setSubscriptions(userSubscriptions.subscriptions)
       })
 
   }, [currentUser]);
