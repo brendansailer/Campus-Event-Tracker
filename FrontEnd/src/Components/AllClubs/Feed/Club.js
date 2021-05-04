@@ -28,7 +28,6 @@ export default function Club(props) {
       referrerPolicy: 'no-referrer',
     }).then(response => response.json()).then(data => {
         setTopics(data)
-        console.log(data)
     })
   }, [clubId]);
   return (
@@ -38,7 +37,7 @@ export default function Club(props) {
             member={props.member}
       />
       {topics.map((topic) => (
-          <p>{topic.topic_description}</p>
+          <p key={topic.topic_id} >{topic.topic_description}</p>
         ))}
       <p className="club-text">{props.description}</p>
     </div>
