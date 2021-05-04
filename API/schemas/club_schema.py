@@ -6,6 +6,11 @@ class IndividualClubSchema(ma.Schema):
   class Meta:
     fields = ('club_id', 'club_name', 'club_description')
 
+# Club schema with extra membership information
+class ClubMemberSchema(ma.Schema):
+  class Meta:
+    fields = ('club_id', 'club_name', 'club_description', 'club_member')
+
 # Club Schema
 class ClubSchema(ma.Schema):
   topic = fields.String()
@@ -14,5 +19,6 @@ class ClubSchema(ma.Schema):
 # Init schema
 club_schema = ClubSchema(many=True)
 individual_club_schema = IndividualClubSchema(many=True)
+club_member_schema = ClubMemberSchema(many=True)
 # the individual schema didn't seem to work for individual objects so I made my own
 single_club_schema = IndividualClubSchema()
