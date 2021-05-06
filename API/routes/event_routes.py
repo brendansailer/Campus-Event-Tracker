@@ -106,3 +106,22 @@ def get_rsvps(id):
     else:
         print(rsvps)
         return rsvp_schema.jsonify(rsvps, many=True)
+
+@event_api.route('/event/clubevents/<user_id>', methods=['GET'])
+def get_club_events(user_id):
+    cur = get_cursor()
+
+    sql = """
+             SELECT e.event_id, e.club_id, TO_CHAR(e.event_start, 'HH:MI PM DY MON DD'), TO_CHAR(e.event_end, 'HH:MI PM DY MON DD'), e.event_description, e.img_url, c.club_name
+             FROM appevent e
+             JOIN membership m on m.club_id = e.club_id
+             JOIN club c on c.club_id = e.club_id
+             WHERE m.user_id = :user_id
+        """
+     
+    cur.execute(sql, user_id=user_id)
+    events = cur.fetchmany()
+
+    cur.close()
+
+    return event_schema.jsonify([Event(*event) for event in events], many=True)
