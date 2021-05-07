@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import ProtectedRoute from "../AppTools/ProtectedRoutes";
-import HomePageModule from "../../Components/HomePage/HomePage";
+import CalendarPageModule from "../../Components/CalendarPage/CalendarPage";
 import { getCurrentUser } from "../Services/AuthService";
 
 const HomeRoute = () => {
@@ -22,7 +22,7 @@ const HomeRoute = () => {
         exact
         path={flag ? "/home/" + currentUser.id : "/home/"}
         flag={flag}
-        component={HomePageModule}
+        component={CalendarPageModule}
       />
     </div>
   );

@@ -1,11 +1,12 @@
 import Nav from "../Nav/Nav";
-import HomeFeed from "./Feed/Feed";
-import HomeDiscover from "./Discover/Discover";
-import "./HomePage.css";
+// import HomeFeed from "./Feed/Feed";
+// import HomeDiscover from "./Discover/Discover";
+import "./CalendarPage.css";
 import { useHistory, useParams } from "react-router";
 import { getCurrentUser } from "../../Common/Services/AuthService";
+import CalendarWindow from "./Calendar/CalendarWindow";
 
-function HomePage() {
+export default function CalendarPage() {
   const { userId } = useParams();
   const history = useHistory();
   if (!getCurrentUser()) {
@@ -19,22 +20,20 @@ function HomePage() {
     return null;
   }
 
-  //Html to be rendered for the HomePage
+  //Html to be rendered for the Calendar Page
   return (
     <div className="page">
-      <div className="grid-container">
-        <div className="home-nav-container">
+      <div className="calendar-grid-container">
+        <div className="calendar-nav-container">
           <Nav></Nav>
         </div>
-        <div className="home-feed-container">
-          <HomeFeed></HomeFeed>
+        <div className="calendar-container">
+          <CalendarWindow></CalendarWindow>
         </div>
-        <div className="home-discover-container">
+        {/* <div className="home-discover-container">
           <HomeDiscover></HomeDiscover>
-        </div>
+        </div> */}
       </div>
     </div>
   );
 }
-
-export default HomePage;

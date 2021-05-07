@@ -4,7 +4,6 @@ import { deleteSubscription, getUserSubscriptions } from "../../../Common/Servic
 import { getDBUser } from "../../../Common/Services/UserService";
 import { useEffect, useState } from "react";
 import SubscriptionTile from "./SubscriptionTile"
-import "../../../Components/HomePage/Feed/Feed.css";
 
 export default function UserSubscriptions(props) {
   const [subscriptions, setSubscriptions] = useState([]);
