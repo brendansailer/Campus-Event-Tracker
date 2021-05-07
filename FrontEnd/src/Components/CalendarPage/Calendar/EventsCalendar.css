@@ -1,0 +1,17 @@
+.events-calendar {
+    height: 100%;
+    width: 100%;
+    padding: 10px
+}
+
+.rbc-today {
+    background-color: #000000;
+}
+
+.rbc-toolbar button {
+    color: #ffffff;
+}
+
+button.rbc-active {
+    color: #000000
+}
