@@ -8,6 +8,7 @@ import ProtectedHomeRouteModule from "../Common/ProtectedRoutes/ProtectedHomeRou
 import IndividualEventPage from "./IndividualEventPage/IndividualEventPage";
 import IndividualClubPage from "./IndividualClubPage/IndividualClubPage";
 import AllClubsModule from "./AllClubs/AllClubs";
+import ClubAdminModule from "./ClubAdmin/ClubAdmin";
 
 import {
   BrowserRouter as Router,
@@ -38,6 +39,7 @@ const Components = () => {
         <Route path="/login" component={AuthModule} />
         <Route path="/event/:eventId" component={IndividualEventPage} />
         <Route path="/club/:clubId" component={IndividualClubPage} />
+        <Route path="/admin/:clubId" component={ClubAdminModule} />
         <Redirect to="/login" />
       </Switch>
     </Router>
