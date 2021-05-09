@@ -20,7 +20,7 @@ export const createEvent = (newEvent) => {
 }
 
 export const getClubEvents = (clubId) => {
-    return fetch('/event/clubevents', {
+    return fetch('/club/event/' + clubId, {
       method: 'GET', // *GET, POST, PUT, DELETE, etc.
       mode: 'cors', // no-cors, *cors, same-origin
       cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -30,9 +30,19 @@ export const getClubEvents = (clubId) => {
       },
       redirect: 'follow', // manual, *follow, error
       referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-      body: JSON.stringify(
-        {
-          club_id: clubId, 
-        })
-    }).then(response => response.json())
+    })
+}
+
+export const deleteEvent = (eventId) => {
+  return fetch('/event/delete/' + eventId, {
+    method: 'DELETE', // *GET, POST, PUT, DELETE, etc.
+    mode: 'cors', // no-cors, *cors, same-origin
+    cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+    credentials: 'same-origin', // include, *same-origin, omit
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    redirect: 'follow', // manual, *follow, error
+    referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+  }).then(response => response.json())
 }

@@ -4,6 +4,7 @@ import "./ClubAdmin.css";
 import NewEvent from "./NewEvent/NewEvent";
 import { useEffect, useState } from "react";
 import NewAnnouncement from "./NewAnnouncement/NewAnnouncement";
+import EventsManager from "./EventsManager/EventsManager";
 
 const ClubAdmin = (props) => {
   const [club, setClub] = useState({});
@@ -36,6 +37,9 @@ const ClubAdmin = (props) => {
                   clubId = {props.match.params.clubId}
                 />
                 <NewAnnouncement
+                  clubId = {props.match.params.clubId}
+                />
+                <EventsManager
                   clubId = {props.match.params.clubId}
                 />
             <h4>Delete Previous Events</h4>
