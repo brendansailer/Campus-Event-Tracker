@@ -108,7 +108,7 @@ def get_rsvps(id):
         return rsvp_schema.jsonify(rsvps, many=True)
 
 @event_api.route('/event/delete/<id>', methods=['DELETE'])
-def delete_event():
+def delete_event(id):
     con = get_connection()
     cur = get_cursor()
 
