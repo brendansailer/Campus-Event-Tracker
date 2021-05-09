@@ -112,12 +112,6 @@ def delete_event(id):
     con = get_connection()
     cur = get_cursor()
 
-    club_id = request.json['club_id']
-    event_description = request.json['event_description']
-    event_start = request.json['event_start']
-    event_end = request.json['event_end']
-
-
     sql = """
           DELETE FROM appevent
           WHERE event_id = :id
