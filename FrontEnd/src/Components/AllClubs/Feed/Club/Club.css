@@ -1,0 +1,19 @@
+.club{
+    border: 1px solid grey;
+    padding: 30px;
+}
+
+.club-name {
+    font-family: "Poppins";
+    font-size: 1.25em;
+    font-weight: 500;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.club-text{
+    margin-top: 10px;
+    margin-left: 10px;
+    font-family: sans-serif;
+    color: white
+}

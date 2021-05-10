@@ -10,7 +10,7 @@
     padding: 10px;
 }
 
-.grid-container{
+.clubs-grid-container{
     height: 100%;
 }
 
@@ -21,7 +21,7 @@
         grid-template-rows: 130px auto;
     }
 
-    .home-discover-container{
+    .clubs-grid-container{
         display: none;
     }
 }
@@ -32,13 +32,10 @@
           height: 100vh;
           width: 100vw;
       }
-    .grid-container{
+
+    .clubs-grid-container{
         display: grid;
         grid-template-columns: 130px auto;
-    }
-
-    .home-discover-container{
-        display: none;
     }
 }
 
@@ -49,14 +46,9 @@
           width: 100vw;
       }
 
-    .grid-container{
+    .clubs-grid-container{
         display: grid;
         grid-template-columns: auto 575px;
-
-    }
-
-    .home-discover-container{
-        display: none;
     }
 }
 
@@ -66,7 +58,8 @@
           height: 100vh;
           width: 100vw;
       }
-    .grid-container{
+
+    .club-grid-container{
         display: grid;
         grid-template-columns: auto 575px 325px;
 
@@ -84,9 +77,8 @@
         width: 100vw;
     }
 
-    .grid-container{
+    .clubs-grid-container{
         display: grid;
         grid-template-columns: 300px 575px 325px;
-    
     }
 }
