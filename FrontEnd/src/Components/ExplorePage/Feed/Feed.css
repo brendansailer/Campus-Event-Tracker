@@ -7,10 +7,10 @@
     height: 100%;
 }
 
-
 .feed .feed-header{
     text-align: center;
     font-family: 'Poppins';
+    margin: auto;
 }
 
 .post{
@@ -27,6 +27,7 @@
     overflow-y: auto;
 }
 
-.segmented-button{
+.header{
     margin: auto;
+    text-align: center;
 }
