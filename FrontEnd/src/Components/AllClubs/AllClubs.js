@@ -21,14 +21,13 @@ function AllClubs() {
   //Html to be rendered for the AllClubs
   return (
     <div className="page">
-      <div className="grid-container">
+      <div className="clubs-grid-container">
         <div className="clubs-nav-container">
           <Nav></Nav>
         </div>
-        <div className="home-feed-container">
+        <div className="clubs-feed-container">
           <ClubFeed></ClubFeed>
         </div>
-        <p>SEE ME</p>
       </div>
     </div>
   );
