@@ -4,6 +4,7 @@ import "./Feed.css";
 import { SegmentedControl } from 'segmented-control'
 import { getCurrentUser } from "../../../Common/Services/AuthService.js";
 import { getDBUser } from "../../../Common/Services/UserService.js";
+import moment from "moment";
 
 class Feed extends React.Component {
   constructor(props){
@@ -33,36 +34,34 @@ class Feed extends React.Component {
 
   render() {
     return (
-      <div className="feed">
-        <div>
-          <h2 className="feed-header">
-            {"Events Around Campus"}{" "}
-          </h2>
+      <div>
+        <div className="header">
+          <h2 className="feed-header">{"Events Around Campus"}{" "}</h2>
+          <SegmentedControl
+              name="twoOptions"
+              options={[
+              { label: "All Events", value: "/event", default: true },
+              { label: "Your Club's Events", value: "/event/clubevents/" + this.state.dbUser.user_id}
+              ]}
+              setValue={route => this.getEvents(route)}
+              style={{ width: 400, color: '#ab47bc' }} // purple400
+          />
         </div>
-        <div className="segmented-button">
-        <SegmentedControl
-            name="twoOptions"
-            options={[
-            { label: "All Events", value: "/event", default: true },
-            { label: "Your Club's Events", value: "/event/clubevents/" + this.state.dbUser.user_id}
-            ]}
-            setValue={route => this.getEvents(route)}
-            style={{ width: 400, color: '#ab47bc' }} // purple400
-        />
-        </div>
-        <div className="event-info-container">
-          {this.state.events.map((event) => (
-            <Event
-              key={event.event_id}
-              description={event.event_description}
-              club_id={event.club_id}
-              event_img={event.event_img}
-              event_start={event.start_time}
-              event_end={event.end_time}
-              club_name={event.club_name}
-              event_id={event.event_id}
-            />
-          ))}
+        <div className="feed">
+          <div className="event-info-container">
+            {this.state.events.map((event) => (
+              <Event
+                key={event.event_id}
+                description={event.event_description}
+                club_id={event.club_id}
+                event_img={event.event_img}
+                event_start={moment(event.start_time).format("llll")} // https://medium.com/how-to-react/format-your-date-or-time-in-react-js-using-moment-js-89c5c6e4f174
+                event_end={moment(event.end_time).format("llll")}
+                club_name={event.club_name}
+                event_id={event.event_id}
+              />
+            ))}
+          </div>
         </div>
       </div>
     );

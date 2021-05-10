@@ -9,6 +9,7 @@ CREATE TABLE appevent (
     event_start TIMESTAMP NOT NULL,
     event_end TIMESTAMP NOT NULL,
     event_description VARCHAR(100),
+    location VARCHAR(50),
     img_url VARCHAR(100),
     CONSTRAINT event_pk PRIMARY KEY (event_id),
     CONSTRAINT club_fk_event
