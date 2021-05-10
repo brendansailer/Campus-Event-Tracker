@@ -4,6 +4,7 @@ import "./Feed.css";
 import { SegmentedControl } from 'segmented-control'
 import { getCurrentUser } from "../../../Common/Services/AuthService.js";
 import { getDBUser } from "../../../Common/Services/UserService.js";
+import moment from "moment";
 
 class Feed extends React.Component {
   constructor(props){
@@ -57,8 +58,8 @@ class Feed extends React.Component {
               description={event.event_description}
               club_id={event.club_id}
               event_img={event.event_img}
-              event_start={event.start_time}
-              event_end={event.end_time}
+              event_start={moment(event.start_time).format("llll")} // https://medium.com/how-to-react/format-your-date-or-time-in-react-js-using-moment-js-89c5c6e4f174
+              event_end={moment(event.end_time).format("llll")}
               club_name={event.club_name}
               event_id={event.event_id}
             />
