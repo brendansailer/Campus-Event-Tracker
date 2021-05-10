@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from database_helpers import get_cursor, get_connection
+from database_helpers import get_connection, close
 from schemas.topic_schema import topic_schema, individual_topic_schema
 from models.topic_model import Topic  
 
@@ -7,15 +7,14 @@ topic_api = Blueprint('topic_api', __name__)
 
 @topic_api.route('/clubTopic', methods=['GET'])
 def get_topics():
-    cur = get_cursor()
+    con, cur = get_connection()
 
     sql = """SELECT * FROM topic"""
 
     cur.execute(sql)
     tuples = cur.fetchmany()
 
-    cur.close()
-    print(tuples)
+    close(con, cur)
 
     topics = [Topic(*topic) for topic in tuples] # Take the tuples and create Event models which can be serialized by the Event schema
 
@@ -23,8 +22,7 @@ def get_topics():
 
 @topic_api.route('/clubTopic/create', methods=['POST'])
 def create_topic():
-    con = get_connection()
-    cur = get_cursor()
+    con, cur = get_connection()
 
     description = request.json['description']
 
@@ -35,14 +33,13 @@ def create_topic():
 
     cur.execute(sql, description=description)
     con.commit()
-    cur.close()
+    close(con, cur)
 
     return jsonify(result=True)
 
 @topic_api.route('/clubTopic/<club>', methods=['GET'])
 def get_topic_from_club(club):
-    con = get_connection()
-    cur = get_cursor()
+    con, cur = get_connection()
 
     sql = """
         SELECT topic.topic_id, topic.topic_description
@@ -53,6 +50,6 @@ def get_topic_from_club(club):
     cur.execute(sql, club=club)
     topics = cur.fetchmany()
 
-    cur.close()
+    close(con, cur)
 
     return individual_topic_schema.jsonify([Topic(*topic) for topic in topics])

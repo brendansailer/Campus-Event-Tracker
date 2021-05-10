@@ -1,11 +1,11 @@
 from flask import Blueprint, request, jsonify
-from database_helpers import get_cursor, get_connection
+from database_helpers import get_connection, close
 
 login_api = Blueprint('login_api', __name__)
 
 @login_api.route('/login', methods=['POST'])
 def login():
-    cur = get_cursor()
+    con, cur = get_connection()
 
     # Get fields from the POST request
     username = request.json['username']
@@ -20,7 +20,7 @@ def login():
     cur.execute(sql, email=email, username=username)
 
     user_id = cur.fetchone()
-    cur.close()
+    close(con, cur)
 
     if user_id: # User exists
         return jsonify(result=True, user_id=user_id[0]) # Unpack the tuple returned by execute()
@@ -29,7 +29,7 @@ def login():
 
 @login_api.route('/login/reset', methods=['POST'])
 def reset_password():
-    cur = get_cursor()
+    con, cur = get_connection()
 
     new_password = request.json['new_password']
     old_password = request.json['old_password']
@@ -55,16 +55,15 @@ def reset_password():
         """
         cur.execute(sql, user_id=user_id, new_password=new_password)
 
-        cur.close()
+        close(con, cur)
         return jsonify(result=True)
     else:
-        cur.close()
+        close(con, cur)
         return jsonify(result=False)
 
 @login_api.route('/login/create', methods=['POST'])
 def create_account():
-    con = get_connection()
-    cur = get_cursor()
+    con, cur = get_connection()
 
     username = request.json['username']
     email = request.json['email']
@@ -77,6 +76,6 @@ def create_account():
 
     cur.execute(sql, username=username, email=email, password=password)
     con.commit()
-    cur.close()
+    close(con, cur)
 
     return jsonify(result=True)
