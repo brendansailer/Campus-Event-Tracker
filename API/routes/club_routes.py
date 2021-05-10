@@ -142,7 +142,7 @@ def get_events(id):
     con, cur = get_connection()
 
     sql = """
-        SELECT e.event_id, e.club_id, TO_CHAR(e.event_start, 'HH:MI PM DY MON DD'), TO_CHAR(e.event_end, 'HH:MI PM DY MON DD'), e.event_description, e.img_url, c.club_name
+        SELECT e.event_id, e.club_id, TO_CHAR(e.event_start, 'HH:MI PM DY MON DD'), TO_CHAR(e.event_end, 'HH:MI PM DY MON DD'), e.event_description, e.img_url, c.club_name, e.location
         FROM appevent e
         JOIN club c on c.club_id = e.club_id
         WHERE e.club_id = :id
@@ -181,7 +181,7 @@ def create_event():
     event_description = request.json['event_description']
     event_start = request.json['event_start']
     event_end = request.json['event_end']
-
+    location = request.json['']
 
     sql = """
           INSERT INTO appevent (club_id, event_start, event_end, event_description)
