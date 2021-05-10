@@ -40,6 +40,7 @@ function IndividualEventPage(props) {
             event_start={event.start_time}
             club_name={event.club_name}
             event_end={event.end_time}
+            location={event.location}
           />
         </div>
       </div>
