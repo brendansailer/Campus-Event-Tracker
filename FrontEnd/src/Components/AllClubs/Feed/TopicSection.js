@@ -16,7 +16,7 @@ export default function TopicSection(props) {
               club_id={club.club_id}
               description={club.club_description}
               name={club.club_name}
-              //member={club.club_member}
+              member={club.club_member}
             />
           ))}
         </div>

@@ -14,7 +14,7 @@ class ClubMemberSchema(ma.Schema):
 # Club Schema
 class ClubSchema(ma.Schema):
   topic = fields.String()
-  clubs = fields.Nested(IndividualClubSchema, many=True)
+  clubs = fields.Nested(ClubMemberSchema, many=True)
 
 # Init schema
 club_schema = ClubSchema(many=True)

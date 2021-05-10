@@ -50,8 +50,8 @@ def get_personal_clubs(id):
 
     return club_member_schema.jsonify([ClubUser(*club) for club in clubs])
 
-@club_api.route('/clubsgrouped/topics', methods=['GET'])
-def get_club_by_topic():
+@club_api.route('/clubsgrouped/topics/<user_id>', methods=['GET'])
+def get_club_by_topic(user_id):
     con, cur = get_connection()
 
     sql = """
@@ -66,20 +66,31 @@ def get_club_by_topic():
         topic_id = topic[0]
 
         sql = """
-        SELECT ct.club_id, c.club_name, c.club_description
+        SELECT ct.club_id, c.club_name, c.club_description, 1
+        FROM club_tag ct
+        JOIN club c ON c.club_id = ct.club_id
+        JOIN membership m ON c.club_id = m.club_id
+        WHERE ct.topic_id = :topic_id
+        AND   m.user_id = :user_id
+        UNION
+        SELECT ct.club_id, c.club_name, c.club_description, 0
         FROM club_tag ct
         JOIN club c ON c.club_id = ct.club_id
         WHERE ct.topic_id = :topic_id
+        AND   c.club_id NOT IN 
+            (SELECT membership.club_id 
+            FROM membership 
+            WHERE membership.user_id = :user_id)
         """
 
-        cur.execute(sql, topic_id=topic_id)
+        cur.execute(sql, topic_id=topic_id, user_id=user_id)
         clubs = cur.fetchmany()
 
         cur.execute("SELECT topic_description FROM topic WHERE topic_id = :topic_id", topic_id=topic_id)
         topic = cur.fetchone()
         topic_name = topic[0]
 
-        club_fragments.append({"topic": topic_name, "clubs": [Club(*club) for club in clubs]})
+        club_fragments.append({"topic": topic_name, "clubs": [ClubUser(*club) for club in clubs]})
 
     close(con, cur)
 

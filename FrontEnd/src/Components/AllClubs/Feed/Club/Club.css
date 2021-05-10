@@ -1,5 +1,10 @@
-.club{
-    border: 1px solid grey;
+.club-subscribed{
+    border: 1px solid blue;
+    padding: 30px;
+}
+
+.club-unsubscribed{
+    border: 1px solid red;
     padding: 30px;
 }
 
