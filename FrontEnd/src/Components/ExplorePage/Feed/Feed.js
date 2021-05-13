@@ -44,7 +44,7 @@ class Feed extends React.Component {
               { label: "Your Club's Events", value: "/event/clubevents/" + this.state.dbUser.user_id}
               ]}
               setValue={route => this.getEvents(route)}
-              style={{ width: 400, color: '#ab47bc' }} // purple400
+              style={{ width: 400, height: 50, color: '#057BFE' }} // Min hight is 50
           />
         </div>
         <div className="feed">
