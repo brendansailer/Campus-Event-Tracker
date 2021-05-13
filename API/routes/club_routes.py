@@ -199,7 +199,7 @@ def create_event():
 
     return jsonify(result=True)
 
-@event_api.route('/announcement/delete/<id>', methods=['DELETE'])
+@club_api.route('/announcement/delete/<id>', methods=['DELETE'])
 def delete_announcement(id):
     con = get_connection()
     cur = get_cursor()
