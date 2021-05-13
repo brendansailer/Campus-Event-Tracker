@@ -7,7 +7,6 @@
     height: 100%;
 }
 
-
 .feed .feed-header{
     text-align: center;
     font-family: 'Poppins';
@@ -28,5 +27,10 @@
 }
 
 .subscribed-field { /* Probably want to upgrade this a little */
+    text-align: center;
+}
+
+.header{
+    margin: auto;
     text-align: center;
 }

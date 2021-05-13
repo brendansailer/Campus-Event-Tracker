@@ -72,8 +72,8 @@ export default function Feed(props) {
   console.log("ISMEMBER", isMember)
 
   return (
-    <div className="feed">
-      <div className="feed-banner">
+    <div>
+      <div className="header">
         <h2 className="feed-header">
           {club.club_name}
         </h2>
@@ -81,18 +81,20 @@ export default function Feed(props) {
           {isMember ? <h3>subscribed</h3> : <h3><button className="subscribe-btn" onClick={subscribe}>Join <FontAwesomeIcon icon={faPlus} /></button></h3>}
         </div>
       </div>
-      <div className="event-info-container">
-        {events.map((event) => (
-          <Event
-            key={event.event_id}
-            description={event.event_description}
-            club={event.club_id}
-            event_img={event.event_img}
-            event_start={event.start_time}
-            club_name={event.club_name}
-            event_id={event.event_id}
-          />
-        ))}
+      <div className="feed">
+        <div className="event-info-container">
+          {events.map((event) => (
+            <Event
+              key={event.event_id}
+              description={event.event_description}
+              club={event.club_id}
+              event_img={event.event_img}
+              event_start={event.start_time}
+              club_name={event.club_name}
+              event_id={event.event_id}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );

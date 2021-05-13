@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import Message from "./Message.js";
 import "./Announcements.css";
+import moment from "moment";
 
 export default function Announcements(props) {
     let clubId = props.clubId; // Get the URL Parameter
@@ -35,8 +36,8 @@ export default function Announcements(props) {
           {messages.map((message) => (
             <Message
               key={message.announcement_id}
-              event_start={message.created_at}
-              event_end={message.expires_at}
+              event_start={moment(message.created_at).format("MMMM Do")} // Add "LT" at the end to get the time
+              event_end={moment(message.expires_at).format("MMMM Do")}
               description={message.announcement_text}
               id={message.announcement_id}
             />
