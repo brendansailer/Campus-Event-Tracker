@@ -46,8 +46,6 @@ const ClubAdmin = (props) => {
                 <AnnouncementsManager
                   clubId = {props.match.params.clubId}
                 />
-            <h4>Delete Previous Events</h4>
-              <p>In progress</p>
         </div>
       </div>
     </div>
