@@ -48,7 +48,7 @@
 
     .clubs-grid-container{
         display: grid;
-        grid-template-columns: auto 575px;
+        grid-template-columns: 300px auto;
     }
 }
 
@@ -61,7 +61,7 @@
 
     .club-grid-container{
         display: grid;
-        grid-template-columns: auto 575px 325px;
+        grid-template-columns: 300px 800px;
 
     }
 }
@@ -79,6 +79,6 @@
 
     .clubs-grid-container{
         display: grid;
-        grid-template-columns: 300px 575px 325px;
+        grid-template-columns: 300px 800px;
     }
 }
