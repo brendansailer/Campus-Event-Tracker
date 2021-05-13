@@ -23,6 +23,10 @@ export default function UserSubscriptions(props) {
 
   const unsubscribe = (club_id) => () => {
     deleteSubscription(dbUser.user_id, club_id)
+    var subs = [...subscriptions] // Create a copy of the subscriptions
+    var index = subs.map(function(s) {return s.club_id}).indexOf(club_id) // Get the index of the club to remove
+    subs.splice(index, 1) // Remove it
+    setSubscriptions(subs) // Update the subscriptions
   };
 
   return (
