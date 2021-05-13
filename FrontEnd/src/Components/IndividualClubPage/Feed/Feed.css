@@ -7,7 +7,6 @@
     height: 100%;
 }
 
-
 .feed .feed-header{
     text-align: center;
     font-family: 'Poppins';
@@ -25,4 +24,13 @@
     margin-top: 30px;
     height: 100%;
     overflow-y: auto;
+}
+
+.subscribed-field { /* Probably want to upgrade this a little */
+    text-align: center;
+}
+
+.header{
+    margin: auto;
+    text-align: center;
 }

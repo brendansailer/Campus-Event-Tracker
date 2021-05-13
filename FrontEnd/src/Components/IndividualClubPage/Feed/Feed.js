@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import Event from "./Event.js";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faJoint } from '@fortawesome/free-solid-svg-icons'
+import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import "./Feed.css";
 import { getCurrentUser } from "../../../Common/Services/AuthService.js";
 import { getDBUser } from "../../../Common/Services/UserService.js";
@@ -66,30 +66,35 @@ export default function Feed(props) {
     console.log(dbUser.user_id, parseInt(clubId));
     subscribeUserToClub(dbUser.user_id, parseInt(clubId));
     subscribed = true;
+    setIsMember(true);
   }
   console.log("CLUB", club);
   console.log("ISMEMBER", isMember)
 
   return (
-    <div className="feed">
-      <div className="feed-banner">
+    <div>
+      <div className="header">
         <h2 className="feed-header">
           {club.club_name}
         </h2>
-        {isMember ? <h3>subscribed</h3> : <h3><button className="subscribe-btn" onClick={subscribe}>join<FontAwesomeIcon icon={faJoint} /></button></h3>}
+        <div className="subscribed-field">
+          {isMember ? <h3>subscribed</h3> : <h3><button className="subscribe-btn" onClick={subscribe}>Join <FontAwesomeIcon icon={faPlus} /></button></h3>}
+        </div>
       </div>
-      <div className="event-info-container">
-        {events.map((event) => (
-          <Event
-            key={event.event_id}
-            description={event.event_description}
-            club={event.club_id}
-            event_img={event.event_img}
-            event_start={event.start_time}
-            club_name={event.club_name}
-            event_id={event.event_id}
-          />
-        ))}
+      <div className="feed">
+        <div className="event-info-container">
+          {events.map((event) => (
+            <Event
+              key={event.event_id}
+              description={event.event_description}
+              club={event.club_id}
+              event_img={event.event_img}
+              event_start={event.start_time}
+              club_name={event.club_name}
+              event_id={event.event_id}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );
