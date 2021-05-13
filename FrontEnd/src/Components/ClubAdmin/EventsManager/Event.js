@@ -15,12 +15,12 @@ export default function Event(props) {
       {props.event_img && <img className="event-image" src={props.event_img} alt="profile"></img>}
       <div className="event-info">
       <button className="delete-button" onClick={deleteEventHandler}>DELETE</button>
-        <h3 className="event-time">{props.event_start}</h3>
+        <p className="event-time">Event Start: {props.event_start}</p>
       </div>
       <div className="event-info">
-        <h3 className="event-time">{props.event_end}</h3>
+        <p className="event-time">Event End: {props.event_end}</p>
       </div>
-      <p className="event-text">{props.description}</p>
+      <p className="event-text">Description: {props.description}</p>
       <Link className="event-link" to={"/event/" + props.event_id}> Go event page </Link>
     </div>
   );

@@ -1,26 +1,28 @@
 import React from "react";
 import "./NewEvent.css";
-import { getDBUser } from "../../../Common/Services/UserService";
-import { getCurrentUser } from "../../../Common/Services/AuthService";
-import { useEffect, useState } from "react";
+//import { getDBUser } from "../../../Common/Services/UserService";
+//import { getCurrentUser } from "../../../Common/Services/AuthService";
+import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { createEvent } from "../../../Common/Services/EventService";
 import { getDateString } from "../../../Common/Services/DateService";
 
 const NewEvent = (props) => {
-  var currentUser = getCurrentUser();
-  const [dbUser, setDbUser] = useState({});
+  //var currentUser = getCurrentUser();
+  //const [dbUser, setDbUser] = useState({});
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   const [eventDescription, setEventDescription] = useState();
 
+  /*
   useEffect(() => {
     getDBUser(currentUser.get("username"), currentUser.get("email"))
       .then((user) => {
         setDbUser(user);
       })
   }, [currentUser])
+  */
 
   const handleSubmit = (evt) => {
     evt.preventDefault();

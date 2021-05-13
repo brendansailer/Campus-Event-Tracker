@@ -1,8 +1,8 @@
 .event{
     border-bottom: 1px solid grey;
     border-width: 75%;
-    padding-bottom: 30px;
-    padding-top: 30px;
+    padding-bottom: 5px;
+    padding-top: 5px;
 }
 
 .event-image {
@@ -43,7 +43,7 @@
     background-color: #f44336;
     color: white;
     font-family: "Poppins";
-    padding: 16px 16px;
+    padding: 10px 16px;
     border-radius: 12px;
     border: 2px solid grey; /* Green */
 }

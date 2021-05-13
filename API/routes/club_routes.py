@@ -198,3 +198,19 @@ def create_event():
     cur.close()
 
     return jsonify(result=True)
+
+@event_api.route('/announcement/delete/<id>', methods=['DELETE'])
+def delete_announcement(id):
+    con = get_connection()
+    cur = get_cursor()
+
+    sql = """
+          DELETE FROM announcement
+          WHERE announcement_id = :id
+    """
+
+    cur.execute(sql, id=id)
+    con.commit()
+    cur.close()
+
+    return jsonify(result=True)

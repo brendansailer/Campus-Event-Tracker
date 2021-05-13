@@ -1,41 +1,19 @@
 import React from "react";
 import "./EventsManager.css";
-import { getDBUser } from "../../../Common/Services/UserService";
-import { getCurrentUser } from "../../../Common/Services/AuthService";
 import { useEffect, useState } from "react";
-import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { getDateString } from "../../../Common/Services/DateService";
 import { getClubEvents } from "../../../Common/Services/EventService";
 import Event from "./Event";
 
 const EventsManager = (props) => {
   const [events, setEvents] = useState([]);
-  var currentUser = getCurrentUser();
+
   useEffect(() => {
     getClubEvents(props.clubId).then(response => response.json()).then(data => {
         console.log(data)
         setEvents(data)
     })
-  }, []);
-  /*
-  useEffect(() => {
-    fetch('/event', {
-      method: 'GET', // *GET, POST, PUT, DELETE, etc.
-      mode: 'cors', // no-cors, *cors, same-origin
-      cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-      credentials: 'same-origin', // include, *same-origin, omit
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      redirect: 'follow', // manual, *follow, error
-      referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-    }).then(response => response.json()).then(data => {
-        console.log(data)
-        setEvents(data)
-    })
-  }, []);
-  */
+  }, [props.clubId]);
     
   return (
     <div className="events-container">
