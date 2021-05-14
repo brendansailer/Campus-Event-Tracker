@@ -69,6 +69,31 @@ def create_subscription():
 
     return jsonify(result=True)
 
+@membership_api.route('/membership/crtadmin', methods=['POST'])
+def create_admin():
+    con, cur = get_connection()
+
+    user_id = request.json['user_id']
+    club_id = request.json['club_id']
+
+    sql = """
+        UPDATE membership 
+        SET rank = 1
+        WHERE user_id = :user_id AND club_id = :club_id
+    """
+
+    try:
+        cur.execute(sql, user_id=user_id, club_id=club_id)
+    except:
+        con.commit()
+        close(con, cur)
+        return jsonify(result=False)
+
+    con.commit()
+    close(con, cur)
+
+    return jsonify(result=True)
+
 @membership_api.route('/membership/delete', methods=['POST'])
 def delete_subscription():
     con, cur = get_connection()
