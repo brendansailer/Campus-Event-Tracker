@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import NewAnnouncement from "./NewAnnouncement/NewAnnouncement";
 import EventsManager from "./EventsManager/EventsManager";
 import AnnouncementsManager from "./AnnouncementsManager/AnnouncementsManager";
+import ClubMembers from "./ClubMembership/ClubMembership";
 
 const ClubAdmin = (props) => {
   const [club, setClub] = useState({});
@@ -44,6 +45,9 @@ const ClubAdmin = (props) => {
                   clubId = {props.match.params.clubId}
                 />
                 <AnnouncementsManager
+                  clubId = {props.match.params.clubId}
+                />
+                <ClubMembers
                   clubId = {props.match.params.clubId}
                 />
         </div>

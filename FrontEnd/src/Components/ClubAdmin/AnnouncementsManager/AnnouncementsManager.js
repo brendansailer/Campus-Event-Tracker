@@ -30,11 +30,3 @@ const AnnouncementsManager = (props) => {
 };
 
 export default AnnouncementsManager;
-
-/*
-        {announcements.map((announcement) => (
-          <Announcement
-            key={announcement.announcement_id}
-          />
-        ))}
-*/
