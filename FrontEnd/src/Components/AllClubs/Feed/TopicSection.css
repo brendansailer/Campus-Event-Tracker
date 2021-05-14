@@ -1,0 +1,23 @@
+.club-info-container{
+    margin-top: 30px;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.topic-feed{
+    background-color: #1F1F1F;
+    border-radius: 7px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: stretch;
+    align-content: flex-start;
+    border: 1px solid grey;
+    width: 790px;
+}
+
+.feed .feed-header{
+    text-align: center;
+    font-family: 'Poppins';
+}

@@ -25,12 +25,13 @@ insert into announcement (club_id, announcement_text, created_at, expires_at)
     );
 
 
-insert into appevent (club_id, event_start, event_end, event_description)
+insert into appevent (club_id, event_start, event_end, event_description, location)
     values(
         (select club_id from club where club_name = 'Chess Club'),
         '02-JAN-2003 2:00:00',
         '02-JAN-2003 3:00:00',
-        'That time of year where we wash our pawns'
+        'That time of year where we wash our pawns',
+        'Duncan Student Center'
     );
 
 insert into rsvp 

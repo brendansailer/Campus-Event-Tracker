@@ -1,4 +1,4 @@
-import HomePageModule from "./HomePage/HomePage";
+import CalendarPageModule from "./CalendarPage/CalendarPage";
 import ExplorePageModule from "./ExplorePage/ExplorePage"
 import ProfilePageModule from "./ProfilePage/ProfilePage";
 import ProtectedUpdateProfilePageModule from "../Common/ProtectedRoutes/UpdateProfileRoute";
@@ -34,7 +34,7 @@ const Components = () => {
         <Route path="/profile/:userId" component={ProfilePageModule} />
         <Route path="/explore/:userId" component={ExplorePageModule} />
         <Route path="/home-auth" component={ProtectedHomeRouteModule} />
-        <Route path="/home/:userId" component={HomePageModule} />
+        <Route path="/home/:userId" component={CalendarPageModule} />
         <Route path="/clubs/:userId" component={AllClubsModule} />
         <Route path="/register" exact component={AuthRegister} />
         <Route path="/login" component={AuthModule} />

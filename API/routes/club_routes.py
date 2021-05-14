@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from database_helpers import get_cursor, get_connection
+from database_helpers import get_connection, close
 import cx_Oracle
 from schemas.club_schema import club_schema, individual_club_schema, single_club_schema, club_member_schema
 from models.club_model import Club
@@ -13,7 +13,7 @@ club_api = Blueprint('club_api', __name__)
 
 @club_api.route('/club', methods=['GET'])
 def get_clubs():
-    cur = get_cursor()
+    con, cur = get_connection()
     
     sql = """
             SELECT * FROM club
@@ -22,13 +22,13 @@ def get_clubs():
     cur.execute(sql)
     clubs = cur.fetchmany()
     
-    cur.close()
+    close(con, cur)
 
     return individual_club_schema.jsonify([Club(*club) for club in clubs])
 
 @club_api.route('/clubs/<id>', methods=['GET'])
 def get_personal_clubs(id):
-    cur = get_cursor()
+    con, cur = get_connection()
 
     sql = """
         SELECT club.club_id, club.club_description, club.club_name, 1
@@ -46,14 +46,59 @@ def get_personal_clubs(id):
     cur.execute(sql, user_id=id)
     clubs = cur.fetchmany()
 
-    cur.close()
+    close(con, cur)
 
     return club_member_schema.jsonify([ClubUser(*club) for club in clubs])
 
+@club_api.route('/clubsgrouped/topics/<user_id>', methods=['GET'])
+def get_club_by_topic(user_id):
+    con, cur = get_connection()
+
+    sql = """
+        SELECT DISTINCT topic_id FROM club_tag
+    """
+
+    cur.execute(sql)
+    topics = cur.fetchmany()
+
+    club_fragments = []
+    for topic in topics:
+        topic_id = topic[0]
+
+        sql = """
+        SELECT ct.club_id, c.club_name, c.club_description, 1
+        FROM club_tag ct
+        JOIN club c ON c.club_id = ct.club_id
+        JOIN membership m ON c.club_id = m.club_id
+        WHERE ct.topic_id = :topic_id
+        AND   m.user_id = :user_id
+        UNION
+        SELECT ct.club_id, c.club_name, c.club_description, 0
+        FROM club_tag ct
+        JOIN club c ON c.club_id = ct.club_id
+        WHERE ct.topic_id = :topic_id
+        AND   c.club_id NOT IN 
+            (SELECT membership.club_id 
+            FROM membership 
+            WHERE membership.user_id = :user_id)
+        """
+
+        cur.execute(sql, topic_id=topic_id, user_id=user_id)
+        clubs = cur.fetchmany()
+
+        cur.execute("SELECT topic_description FROM topic WHERE topic_id = :topic_id", topic_id=topic_id)
+        topic = cur.fetchone()
+        topic_name = topic[0]
+
+        club_fragments.append({"topic": topic_name, "clubs": [ClubUser(*club) for club in clubs]})
+
+    close(con, cur)
+
+    return club_schema.jsonify(club_fragments)
+
 @club_api.route('/club/create', methods=['POST'])
 def create_club():
-    con = get_connection()
-    cur = get_cursor()
+    con, cur = get_connection()
 
     club_name = request.json['club_name']
     club_description = request.json['club_description']
@@ -69,7 +114,6 @@ def create_club():
 
     cur.execute(sql, club_name=club_name, club_description=club_description, cur=club_id_cur)
     club_id = club_id_cur.getvalue() # Get the newly inserted club_id
-    print(club_id[0])
 
     sql = """
         INSERT INTO club_tag(club_id, topic_id)
@@ -79,13 +123,13 @@ def create_club():
     cur.execute(sql, club_id=club_id[0], topic_id=topic_id) # Use the club_id to add it to the topic table
 
     con.commit()
-    cur.close()
+    close(con, cur)
 
     return jsonify(result=True)
 
 @club_api.route('/club/random', methods=['GET'])
 def get_random_clubs():
-    cur = get_cursor()
+    con, cur = get_connection()
     
     sql = """
             SELECT * FROM
@@ -98,13 +142,13 @@ def get_random_clubs():
     cur.execute(sql)
     clubs = cur.fetchmany()
     
-    cur.close()
+    close(con, cur)
 
     return individual_club_schema.jsonify([Club(*club) for club in clubs])
 
 @club_api.route('/club/announcement/<id>', methods=['GET'])
 def get_announcements(id):
-    cur = get_cursor()
+    con, cur = get_connection()
 
     sql = """
         SELECT * FROM announcement WHERE club_id = :id
@@ -113,14 +157,13 @@ def get_announcements(id):
     cur.execute(sql, id=id)
     announcements = cur.fetchmany() # TODO - update query to only return current announcements
 
-    cur.close()
+    close(con, cur)
 
     return announcement_schema.jsonify([Announcement(*ann) for ann in announcements], many=True)
 
 @club_api.route('/club/announcement/create', methods=['POST'])
 def create_announcement():
-    con = get_connection()
-    cur = get_cursor()
+    con, cur = get_connection()
 
     club_id = request.json['club_id']
     announcement_text = request.json['announcement_text']
@@ -136,16 +179,16 @@ def create_announcement():
     cur.execute(sql, club_id=club_id, announcement_text=announcement_text, created_at=created_at, expires_at=expires_at)
 
     con.commit()
-    cur.close()
+    close(con, cur)
 
     return jsonify(result=True)
 
 @club_api.route('/club/event/<id>', methods=['GET'])
 def get_events(id):
-    cur = get_cursor()
+    con, cur = get_connection()
 
     sql = """
-        SELECT e.event_id, e.club_id, TO_CHAR(e.event_start, 'HH:MI PM DY MON DD'), TO_CHAR(e.event_end, 'HH:MI PM DY MON DD'), e.event_description, e.img_url, c.club_name
+        SELECT e.event_id, e.club_id, TO_CHAR(e.event_start, 'HH:MI PM DY MON DD'), TO_CHAR(e.event_end, 'HH:MI PM DY MON DD'), e.event_description, e.img_url, c.club_name, e.location
         FROM appevent e
         JOIN club c on c.club_id = e.club_id
         WHERE e.club_id = :id
@@ -154,13 +197,13 @@ def get_events(id):
     cur.execute(sql, id=id)
     tuples = cur.fetchmany() # TODO - update query to only return current events
 
-    cur.close()
+    close(con, cur)
 
     return event_schema.jsonify([Event(*event) for event in tuples], many=True) # Create an array of these events
 
 @club_api.route('/club/<club_id>', methods=['GET'])
 def get_club(club_id):
-    cur = get_cursor()
+    con, cur = get_connection()
     
     sql = """
             SELECT * FROM club
@@ -169,7 +212,7 @@ def get_club(club_id):
 
     cur.execute(sql, club_id=club_id)
     club = cur.fetchone()    
-    cur.close()
+    close(con, cur)
 
     if not club:
         return {"result": "Club does not exist"}
@@ -178,14 +221,13 @@ def get_club(club_id):
 
 @club_api.route('/club/event/create', methods=['POST'])
 def create_event():
-    con = get_connection()
-    cur = get_cursor()
+    con, cur = get_connection()
 
     club_id = request.json['club_id']
     event_description = request.json['event_description']
     event_start = request.json['event_start']
     event_end = request.json['event_end']
-
+    location = request.json['']
 
     sql = """
           INSERT INTO appevent (club_id, event_start, event_end, event_description)
@@ -195,7 +237,7 @@ def create_event():
     cur.execute(sql, club_id=club_id, event_start=event_start, event_end=event_end, event_description=event_description)
 
     con.commit()
-    cur.close()
+    close(con, cur)
 
     return jsonify(result=True)
 

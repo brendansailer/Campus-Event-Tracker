@@ -7,10 +7,10 @@
     height: 100%;
 }
 
-
 .feed .feed-header{
     text-align: center;
     font-family: 'Poppins';
+    margin: auto;
 }
 
 .post{
@@ -25,4 +25,9 @@
     margin-top: 30px;
     height: 100%;
     overflow-y: auto;
+}
+
+.header{
+    margin: auto;
+    text-align: center;
 }

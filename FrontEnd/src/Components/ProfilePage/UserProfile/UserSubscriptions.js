@@ -4,7 +4,6 @@ import { deleteSubscription, getUserSubscriptions } from "../../../Common/Servic
 import { getDBUser } from "../../../Common/Services/UserService";
 import { useEffect, useState } from "react";
 import SubscriptionTile from "./SubscriptionTile"
-import "../../../Components/HomePage/Feed/Feed.css";
 
 export default function UserSubscriptions(props) {
   const [subscriptions, setSubscriptions] = useState([]);
@@ -24,6 +23,10 @@ export default function UserSubscriptions(props) {
 
   const unsubscribe = (club_id) => () => {
     deleteSubscription(dbUser.user_id, club_id)
+    var subs = [...subscriptions] // Create a copy of the subscriptions
+    var index = subs.map(function(s) {return s.club_id}).indexOf(club_id) // Get the index of the club to remove
+    subs.splice(index, 1) // Remove it
+    setSubscriptions(subs) // Update the subscriptions
   };
 
   return (
