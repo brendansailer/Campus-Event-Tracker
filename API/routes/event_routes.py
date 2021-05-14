@@ -108,8 +108,7 @@ def get_rsvps(id):
 
 @event_api.route('/event/delete/<id>', methods=['DELETE'])
 def delete_event(id):
-    con = get_connection()
-    cur = get_cursor()
+    con, cur = get_connection()
 
     sql = """
           DELETE FROM appevent
@@ -121,7 +120,7 @@ def delete_event(id):
     cur.close()
 
     return jsonify(result=True)
-    
+
 @event_api.route('/event/clubevents/<user_id>', methods=['GET'])
 def get_club_events(user_id):
     con, cur = get_connection()
