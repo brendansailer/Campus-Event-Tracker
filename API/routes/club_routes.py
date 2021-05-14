@@ -124,8 +124,9 @@ def create_club():
 
     con.commit()
     close(con, cur)
+    print(club_id[0])
 
-    return jsonify(result=True)
+    return {"club_id": club_id[0]}
 
 @club_api.route('/club/random', methods=['GET'])
 def get_random_clubs():

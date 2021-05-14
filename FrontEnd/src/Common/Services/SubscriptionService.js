@@ -12,7 +12,7 @@ export const getUserSubscriptions = (user_id) => {
     }).then(response => response.json())
 }
 
-export const subscribeUserToClub = (user_id, club_id) => {
+export const subscribeUserToClub = (user_id, club_id, rank = "0") => {
     return fetch('/membership/create', {
         method: 'POST', // *GET, POST, PUT, DELETE, etc.
         mode: 'cors', // no-cors, *cors, same-origin
@@ -23,7 +23,7 @@ export const subscribeUserToClub = (user_id, club_id) => {
         },
         redirect: 'follow', // manual, *follow, error
         referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-        body: JSON.stringify({user_id, club_id, rank: "0"})
+        body: JSON.stringify({user_id, club_id, rank})
     }).then(response => response.json())
 }
 

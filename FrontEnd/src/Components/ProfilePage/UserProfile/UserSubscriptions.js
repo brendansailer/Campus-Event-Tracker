@@ -29,15 +29,24 @@ export default function UserSubscriptions(props) {
     setSubscriptions(subs) // Update the subscriptions
   };
 
+  const deleteClub = (club_id) => () => {
+    var subs = [...subscriptions] // Create a copy of the subscriptions
+    var index = subs.map(function(s) {return s.club_id}).indexOf(club_id) // Get the index of the club to remove
+    subs.splice(index, 1) // Remove it
+    setSubscriptions(subs) // Update the subscriptions
+  };
+
   return (
-    <div className="feed">
-      {/* {getCurrentUser() && getCurrentUser().id === props.userId && <NewPost refreshFeed={refreshFeed} /> } */}
+    <div className="user-clubs">
+      <h3>Your clubs</h3>
       <div className="subscription-container">
         {subscriptions.map((subscription) => (
           <SubscriptionTile
             key={subscription.club_id}
             club_name={subscription.club_name}
             club_description={subscription.club_description}
+            rank={subscription.rank}
+            deleteClub={deleteClub(subscription.club_id)}
             eventHandler={unsubscribe(subscription.club_id)}
           />
         ))}
