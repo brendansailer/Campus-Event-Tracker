@@ -8,6 +8,11 @@
 .club-name p {
     text-align: left;
 }
+
+em { 
+    font-size: 70%;
+}
+
 .buttons {
     align-self: flex-end;
 }
