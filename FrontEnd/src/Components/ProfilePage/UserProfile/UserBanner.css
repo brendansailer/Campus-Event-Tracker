@@ -1,5 +1,8 @@
-.user-profile{
+.user-clubs, .user-banner {
     background-color: #1F1F1F;
+    border-radius: 7px;
+}
+.user-profile{
     border-radius: 7px;
 }
 .profile-img {

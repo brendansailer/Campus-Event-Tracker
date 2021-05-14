@@ -7,6 +7,7 @@ import "./Feed.css";
 import { getCurrentUser } from "../../../Common/Services/AuthService.js";
 import { getDBUser } from "../../../Common/Services/UserService.js";
 import { getUserSubscriptions, subscribeUserToClub } from "../../../Common/Services/SubscriptionService.js";
+import { Button } from "react-bootstrap";
 
 export default function Feed(props) {
     let clubId = props.clubId; // Get the URL Parameter
@@ -78,7 +79,7 @@ export default function Feed(props) {
           {club.club_name}
         </h2>
         <div className="subscribed-field">
-          {isMember ? <h3>subscribed</h3> : <h3><button className="subscribe-btn" onClick={subscribe}>Join <FontAwesomeIcon icon={faPlus} /></button></h3>}
+          {isMember ? <h3>subscribed</h3> : <h3><Button className="subscribe-btn" onClick={subscribe}>Join <FontAwesomeIcon icon={faPlus} /></Button></h3>}
         </div>
       </div>
       <div className="feed">

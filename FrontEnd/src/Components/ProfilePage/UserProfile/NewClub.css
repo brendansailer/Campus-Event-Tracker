@@ -1,0 +1,73 @@
+
+.new-club-btn-container{
+    text-align: center;
+    margin-top: 10px;
+    padding-bottom: 10px;
+}
+.new-club-form {
+    padding: 10px;
+}
+
+.new-club-form {
+    background-color: #1f1f1f;
+    border-radius: 7px;
+}
+
+.form-inline {
+    padding-top: 10px;
+}
+
+.form-inline .form-control {
+    width: 100%;
+}
+
+.form-check-label {
+    margin-right: 10px;
+}
+
+.topic-select {
+    background-color: #202020;
+    color: white;
+    margin-left: 10px;
+    width: 100%;
+}
+
+.new-club-btn .btn {
+    width: 100%;
+}
+
+.new-club-btn{
+    width: auto;
+    padding-top: 20px;
+    /* border-radius: 20px; */
+}
+
+.new-club-btn:hover{
+    border:none;
+}
+
+
+.club-text-name, .club-text-desc{
+    background-color: #202020;
+}
+
+.club-text-name:focus, .club-text-desc:focus {
+    background-color: #202020;
+}
+
+.club-text-desc, .club-text-name,
+select,
+textarea {
+    color: white;
+}
+
+.club-text-name:focus, .club-text-desc:focus,
+select,
+textarea {
+    color: white;
+}
+
+.btn:hover{
+    border: none;
+}
+
