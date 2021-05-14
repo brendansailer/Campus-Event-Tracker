@@ -3,6 +3,7 @@ from database_helpers import get_connection, close
 from schemas.membership_schema import membership_schema
 from schemas.membership_schema import individual_membership_schema
 from models.membership_model import Membership
+from models.member_model import Member
 
 membership_api = Blueprint('membership_api', __name__)
 
@@ -41,7 +42,7 @@ def get_club_members(club_id):
 
     cur.close()
 
-    return individual_membership_schema.jsonify([Membership(*member) for member in tuples])
+    return individual_membership_schema.jsonify([Member(*member) for member in tuples])
 
 @membership_api.route('/membership/create', methods=['POST'])
 def create_subscription():
