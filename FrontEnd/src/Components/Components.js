@@ -9,7 +9,6 @@ import IndividualEventPage from "./IndividualEventPage/IndividualEventPage";
 import IndividualClubPage from "./IndividualClubPage/IndividualClubPage";
 import AllClubsModule from "./AllClubs/AllClubs";
 import ClubAdminModule from "./ClubAdmin/ClubAdmin";
-import ProtectedAdminModule from "../Common/ProtectedRoutes/ProtectedAdminRoute";
 
 import {
   BrowserRouter as Router,
