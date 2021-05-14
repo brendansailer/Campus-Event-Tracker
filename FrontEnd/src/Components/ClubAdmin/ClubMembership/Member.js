@@ -15,13 +15,25 @@ export default function Member(props) {
     setShow(true);
   }
 
+  function isAdmin() {
+      return true;
+  }
+
+  function RelevantButton() {
+      console.log("hello")
+      if(isAdmin()) {
+        return (<Button size="sm" variant="outline-danger">Demote</Button>);
+      } else {
+        return (<Button size="sm" variant="outline-success">Make Admin</Button>);
+      }
+  }
+
   return (
     <div className={show ? 'hidden' : ''}>
       <p className="member-name">{props.member_username}</p>
-      <ButtonGroup aria-label="Basic example">
-        <Button size="sm" variant="outline-success">Promote</Button>
-        <Button size="sm" variant="outline-danger">Demote</Button>
-      </ButtonGroup>
+      <div className="member-buttons">
+        <RelevantButton />
+      </div>
     </div>
   );
 }

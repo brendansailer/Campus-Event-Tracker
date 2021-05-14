@@ -32,7 +32,7 @@ def get_club_members(club_id):
     con, cur = get_connection()
 
     sql = """
-        SELECT membership.user_id, appuser.username
+        SELECT membership.user_id, appuser.username, membership.rank
         FROM membership, appuser
         WHERE membership.club_id = :id AND appuser.user_id = membership.user_id
     """

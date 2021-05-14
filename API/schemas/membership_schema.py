@@ -12,7 +12,7 @@ class MembershipSchema(ma.Schema):
 # Membership Schema
 class MemberItemSchema(ma.Schema):
   class Meta:
-    fields = ('user_id', 'username')
+    fields = ('user_id', 'username', 'rank')
 
 # Init schema
 membership_schema = MembershipSchema() 
