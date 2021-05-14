@@ -28,12 +28,12 @@ const ClubAdmin = (props) => {
   }, [props.match.params.clubId]);
 
   return (
-    <div className="club-admin-page-container">
-      <div className="club-admin-grid-container">
+    <div className="page">
+      <div className="grid-container">
         <div className="club-admin-nav-container">
           <Nav></Nav>
         </div>
-        <div className="club-admin-info-container">
+        <div className="club-admin-feed-container">
             <h2 className="club-admin-header">{club.club_name} Admin</h2>
                 <NewEvent
                   clubId = {props.match.params.clubId}
@@ -47,7 +47,9 @@ const ClubAdmin = (props) => {
                 <AnnouncementsManager
                   clubId = {props.match.params.clubId}
                 />
-                <ClubMembers
+        </div>
+        <div className="club-admin-discover-container">
+        <ClubMembers
                   clubId = {props.match.params.clubId}
                 />
         </div>

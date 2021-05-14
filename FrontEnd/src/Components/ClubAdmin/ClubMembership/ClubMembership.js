@@ -15,7 +15,7 @@ const ClubMembers = (props) => {
   }, [props.clubId]);
     
   return (
-    <div >
+    <div className="membership-discover-container">
       <h3>Manage Members</h3>
       {members.map((member) => (
           <Member
