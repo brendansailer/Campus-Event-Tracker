@@ -1,7 +1,8 @@
 from flask import Blueprint, request, jsonify
 from database_helpers import get_cursor, get_connection
 from schemas.membership_schema import membership_schema
-from models.membership_model import Membership  
+from schemas.membership_schema import individual_member_schema
+from models.membership_model import Membership
 
 membership_api = Blueprint('membership_api', __name__)
 
@@ -24,6 +25,23 @@ def get_subscriptions(user_id):
     members = [Membership(*member) for member in tuples] # Take the tuples and create Event models which can be serialized by the Event schema
 
     return membership_schema.jsonify({"subscriptions": members})
+
+@membership_api.route('/club/members/<club_id>', methods=['GET'])
+def get_club_members(club_id):
+    cur = get_cursor()
+
+    sql = """
+        SELECT membership.user_id, appuser.username
+        FROM membership, appuser
+        WHERE membership.club_id = :id AND appuser.user_id = membership.user_id
+    """
+
+    cur.execute(sql, id=club_id)
+    tuples = cur.fetchmany() # TODO - update query to only return current events
+
+    cur.close()
+
+    return individual_member_schema.jsonify([Membership(*member) for member in tuples])
 
 @membership_api.route('/membership/create', methods=['POST'])
 def create_subscription():

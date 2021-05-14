@@ -214,21 +214,3 @@ def delete_announcement(id):
     cur.close()
 
     return jsonify(result=True)
-
-@club_api.route('/club/members/<club_id>', methods=['GET'])
-def get_club_members(club_id):
-    cur = get_cursor()
-    
-    sql = """
-            SELECT * FROM club
-            WHERE club_id = :club_id
-        """
-
-    cur.execute(sql, club_id=club_id)
-    club = cur.fetchone()    
-    cur.close()
-
-    if not club:
-        return {"result": "Club does not exist"}
-    else:
-        return single_club_schema.jsonify(Club(*club)) 

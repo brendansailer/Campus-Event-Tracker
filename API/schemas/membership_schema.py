@@ -11,3 +11,4 @@ class MembershipSchema(ma.Schema):
 
 # Init schema
 membership_schema = MembershipSchema() 
+individual_membership_schema = MembershipSchema(many=True)
