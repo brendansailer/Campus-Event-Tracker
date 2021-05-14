@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify
 from database_helpers import get_cursor, get_connection
 from schemas.membership_schema import membership_schema
-from schemas.membership_schema import individual_member_schema
+from schemas.membership_schema import individual_membership_schema
 from models.membership_model import Membership
 
 membership_api = Blueprint('membership_api', __name__)
@@ -41,7 +41,7 @@ def get_club_members(club_id):
 
     cur.close()
 
-    return individual_member_schema.jsonify([Membership(*member) for member in tuples])
+    return individual_membership_schema.jsonify([Membership(*member) for member in tuples])
 
 @membership_api.route('/membership/create', methods=['POST'])
 def create_subscription():
