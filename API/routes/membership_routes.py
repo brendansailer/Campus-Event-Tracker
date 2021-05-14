@@ -28,7 +28,7 @@ def get_subscriptions(user_id):
 
 @membership_api.route('/club/members/<club_id>', methods=['GET'])
 def get_club_members(club_id):
-    cur = get_cursor()
+    con, cur = get_connection()
 
     sql = """
         SELECT membership.user_id, appuser.username
