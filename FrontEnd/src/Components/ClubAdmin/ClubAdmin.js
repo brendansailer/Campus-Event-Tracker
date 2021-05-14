@@ -9,11 +9,13 @@ import AnnouncementsManager from "./AnnouncementsManager/AnnouncementsManager";
 import ClubMembers from "./ClubMembership/ClubMembership";
 import { getCurrentUser } from "../../Common/Services/AuthService";
 import { getDBUser } from "../../Common/Services/UserService";
+import { getClubMembers } from "../../Common/Services/MembershipService";
 
 
 const ClubAdmin = (props) => {
   const [club, setClub] = useState({});
   const [dbUser, setDbUser] = useState({});
+  const [show, setShow] = useState(true);
   const currentUser = getCurrentUser();
 
   useEffect(() => {
@@ -32,6 +34,17 @@ const ClubAdmin = (props) => {
     })
   }, [props.match.params.clubId]);
 
+  // Check if user is an admin
+  useEffect(() => {
+    getClubMembers(props.match.params.clubId).then(response => response.json()).then(data => {
+        data.forEach(element => {
+          if(element.user_id === dbUser && element.rank == "1") {
+            setShow(false);
+          }
+        });
+    })
+  }, [props.match.params.clubId, dbUser]);
+
   useEffect(() => {
     getDBUser(currentUser.get("username"), currentUser.get("email"))
       .then((user) => {
@@ -40,12 +53,12 @@ const ClubAdmin = (props) => {
   }, [currentUser])
 
   return (
-    <div className="page">
+    <div className='page'>
       <div className="grid-container">
         <div className="club-admin-nav-container">
           <Nav></Nav>
         </div>
-        <div className="club-admin-feed-container">
+        <div className={show ? 'hidden' : "club-admin-feed-container"}>
             <h2 className="club-admin-header">{club.club_name} Admin</h2>
                 <NewEvent
                   clubId = {props.match.params.clubId}
@@ -60,7 +73,7 @@ const ClubAdmin = (props) => {
                   clubId = {props.match.params.clubId}
                 />
         </div>
-        <div className="club-admin-discover-container">
+        <div className={show ? 'hidden' : "club-admin-discover-container"}>
         <ClubMembers
                   clubId = {props.match.params.clubId}
                   dbUser = {dbUser}
