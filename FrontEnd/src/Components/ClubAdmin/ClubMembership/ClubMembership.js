@@ -22,6 +22,9 @@ const ClubMembers = (props) => {
             key={member.user_id}
             member_id={member.user_id}
             member_username={member.username}
+            member_rank={member.rank}
+            club_id={props.clubId}
+            dbUser={props.dbUser}
           />
         ))}
     </div>

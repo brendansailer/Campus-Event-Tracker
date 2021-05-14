@@ -7,9 +7,14 @@ import NewAnnouncement from "./NewAnnouncement/NewAnnouncement";
 import EventsManager from "./EventsManager/EventsManager";
 import AnnouncementsManager from "./AnnouncementsManager/AnnouncementsManager";
 import ClubMembers from "./ClubMembership/ClubMembership";
+import { getCurrentUser } from "../../Common/Services/AuthService";
+import { getDBUser } from "../../Common/Services/UserService";
+
 
 const ClubAdmin = (props) => {
   const [club, setClub] = useState({});
+  const [dbUser, setDbUser] = useState({});
+  const currentUser = getCurrentUser();
 
   useEffect(() => {
     fetch('/club/' + props.match.params.clubId, {
@@ -26,6 +31,13 @@ const ClubAdmin = (props) => {
         setClub(data)
     })
   }, [props.match.params.clubId]);
+
+  useEffect(() => {
+    getDBUser(currentUser.get("username"), currentUser.get("email"))
+      .then((user) => {
+        setDbUser(user.user_id);
+      })
+  }, [currentUser])
 
   return (
     <div className="page">
@@ -51,6 +63,7 @@ const ClubAdmin = (props) => {
         <div className="club-admin-discover-container">
         <ClubMembers
                   clubId = {props.match.params.clubId}
+                  dbUser = {dbUser}
                 />
         </div>
       </div>
