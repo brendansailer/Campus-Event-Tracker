@@ -95,7 +95,7 @@ def create_admin():
     return jsonify(result=True)
 
 @membership_api.route('/membership/demoteadmin', methods=['DELETE'])
-def create_admin():
+def demote_admin():
     con, cur = get_connection()
 
     user_id = request.json['user_id']
