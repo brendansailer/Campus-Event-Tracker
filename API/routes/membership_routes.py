@@ -94,6 +94,31 @@ def create_admin():
 
     return jsonify(result=True)
 
+@membership_api.route('/membership/demoteadmin', methods=['DELETE'])
+def create_admin():
+    con, cur = get_connection()
+
+    user_id = request.json['user_id']
+    club_id = request.json['club_id']
+
+    sql = """
+        UPDATE membership 
+        SET rank = 0
+        WHERE user_id = :user_id AND club_id = :club_id
+    """
+
+    try:
+        cur.execute(sql, user_id=user_id, club_id=club_id)
+    except:
+        con.commit()
+        close(con, cur)
+        return jsonify(result=False)
+
+    con.commit()
+    close(con, cur)
+
+    return jsonify(result=True)
+
 @membership_api.route('/membership/delete', methods=['POST'])
 def delete_subscription():
     con, cur = get_connection()
