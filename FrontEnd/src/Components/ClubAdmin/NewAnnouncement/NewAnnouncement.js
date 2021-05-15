@@ -47,7 +47,7 @@ const NewAnnouncement = (props) => {
                 showTimeInput
               />
               <br />
-              <Button variant="outline-success" onClick={handleSubmit}>Create Announcement</Button>
+              <Button variant="outline-warning" onClick={handleSubmit}>Create Announcement</Button>
             </form>
     </div>
   );

@@ -38,7 +38,7 @@ export default function Member(props) {
     if(props.admin) {
       return (<Button size="sm" variant="outline-danger" onClick={demoteAdminHandler}>Demote</Button>);
     } else {
-      return (<Button size="sm" variant="outline-success" onClick={makeAdminHandler}>Make Admin</Button>);
+      return (<Button size="sm" variant="outline-warning" onClick={makeAdminHandler}>Make Admin</Button>);
     }
   }
 

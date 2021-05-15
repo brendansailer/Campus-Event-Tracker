@@ -57,7 +57,7 @@ const NewEvent = (props) => {
                 showTimeInput
               />
               <br />
-              <Button variant="outline-success" onClick={handleSubmit}>Create Event</Button>
+              <Button variant="outline-warning" onClick={handleSubmit}>Create Event</Button>
             </form>
     </div>
   );

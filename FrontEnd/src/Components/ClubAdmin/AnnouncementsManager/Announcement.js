@@ -13,7 +13,8 @@ import {ButtonGroup} from 'react-bootstrap';
 export default function Announcement(props) {
   const [show, setShow] = useState(false);
   const [showModifyModal, setShowModifyModal] = useState(false);
-  const [announcementDescription, setAnnouncementDescription] = useState();
+  const [announcementDescription, setAnnouncementDescription] = useState(props.announcement_text);
+  const [viewableAnnouncementDescription, setViewableAnnouncementDescription] = useState(props.announcement_text);
 
   function deleteAnnouncementHandler(e) {
     e.preventDefault();
@@ -32,6 +33,7 @@ export default function Announcement(props) {
         console.log(value);
         handleClose();
       });
+    setViewableAnnouncementDescription(announcementDescription);
   }
 
   const handleClose = () => setShowModifyModal(false);
@@ -61,10 +63,10 @@ export default function Announcement(props) {
       <div className="announcement-info">
         <ButtonGroup aria-label="Basic example">
           <Button variant="outline-danger" size="sm" onClick={deleteAnnouncementHandler}>DELETE</Button>
-          <Button variant="outline-success" size="sm" onClick={modifyAnnouncementHandler}>MODIFY</Button>
+          <Button variant="outline-warning" size="sm" onClick={modifyAnnouncementHandler}>MODIFY</Button>
         </ButtonGroup>
       </div>
-      <p className="event-text">{props.announcement_text}</p>
+      <p className="event-text">{viewableAnnouncementDescription}</p>
     </div>
   );
 }

@@ -82,7 +82,7 @@ export default function Event(props) {
       <div className="event-info">
         <ButtonGroup aria-label="Basic example">
           <Button variant="outline-danger" onClick={deleteEventHandler}>DELETE</Button>
-          <Button variant="outline-success" onClick={modifyEventHandler}>MODIFY</Button>
+          <Button variant="outline-warning" onClick={modifyEventHandler}>MODIFY</Button>
         </ButtonGroup>
         <p className="event-time">Event Start: {props.event_start}</p>
       </div>
