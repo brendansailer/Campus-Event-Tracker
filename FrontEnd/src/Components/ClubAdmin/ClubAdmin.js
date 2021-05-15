@@ -10,7 +10,6 @@ import ClubMembers from "./ClubMembership/ClubMembership";
 import { getCurrentUser } from "../../Common/Services/AuthService";
 import { getDBUser } from "../../Common/Services/UserService";
 import { getClubMembers } from "../../Common/Services/MembershipService";
-import { getDateString } from "../../Common/Services/DateService";
 
 
 const ClubAdmin = (props) => {

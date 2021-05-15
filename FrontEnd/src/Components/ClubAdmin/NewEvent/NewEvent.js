@@ -7,6 +7,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { createEvent } from "../../../Common/Services/EventService";
 import { getDateString } from "../../../Common/Services/DateService";
+import { Button } from 'react-bootstrap';
 
 const NewEvent = (props) => {
   const [startDate, setStartDate] = useState(new Date());
@@ -56,7 +57,7 @@ const NewEvent = (props) => {
                 showTimeInput
               />
               <br />
-              <input type="submit" value="Create Event" />
+              <Button variant="outline-success" onClick={handleSubmit}>Create Event</Button>
             </form>
     </div>
   );

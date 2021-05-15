@@ -1,27 +1,15 @@
 import React from "react";
 import "./NewAnnouncement.css";
-//import { getDBUser } from "../../../Common/Services/UserService";
-//import { getCurrentUser } from "../../../Common/Services/AuthService";
 import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { createAnnouncement } from "../../../Common/Services/AnnouncementService";
 import { getDateString } from "../../../Common/Services/DateService";
+import { Button } from 'react-bootstrap';
 
 const NewAnnouncement = (props) => {
-  //var currentUser = getCurrentUser();
-  //const [dbUser, setDbUser] = useState({});
   const [endDate, setEndDate] = useState(new Date());
   const [announcementDescription, setAnnouncementDescription] = useState();
-
-  /*
-  useEffect(() => {
-    getDBUser(currentUser.get("username"), currentUser.get("email"))
-      .then((user) => {
-        setDbUser(user);
-      })
-  }, [currentUser])
-  */
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -59,7 +47,7 @@ const NewAnnouncement = (props) => {
                 showTimeInput
               />
               <br />
-              <input type="submit" value="Create Announcement" />
+              <Button variant="outline-success" onClick={handleSubmit}>Create Announcement</Button>
             </form>
     </div>
   );

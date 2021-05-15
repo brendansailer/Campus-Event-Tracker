@@ -3,7 +3,7 @@ import React from "react";
 //import { Link } from "react-router-dom";
 import "./Member.css";
 import { useState, useEffect } from "react";
-import {ButtonGroup, Button } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import { makeAdmin, demoteAdmin } from "../../../Common/Services/MembershipService"
 
 export default function Member(props) {

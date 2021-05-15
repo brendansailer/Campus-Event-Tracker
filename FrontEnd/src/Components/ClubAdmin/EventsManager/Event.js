@@ -10,6 +10,7 @@ import ModalHeader from "react-bootstrap/ModalHeader";
 import ModalFooter from "react-bootstrap/ModalFooter";
 import ModalTitle from "react-bootstrap/ModalTitle";
 import DatePicker from "react-datepicker";
+import {ButtonGroup} from 'react-bootstrap';
 
 export default function Event(props) {
   const [show, setShow] = useState(false);
@@ -36,14 +37,6 @@ export default function Event(props) {
     modifyEvent(props.event_id, eventDescription, start_string, end_string).then((value) => {
       console.log(value);
     });
-    /*
-    createEvent({
-      club_id: props.clubId, 
-      event_start: start_string, 
-      event_end: end_string,
-      event_description: eventDescription
-    })
-    */
   }
 
   const handleClose = () => setShowModifyModal(false);
@@ -87,15 +80,17 @@ export default function Event(props) {
       </Modal>
       {props.event_img && <img className="event-image" src={props.event_img} alt="profile"></img>}
       <div className="event-info">
-      <button className="delete-button" onClick={deleteEventHandler}>DELETE</button>
-      <button className="event-modify-button" onClick={modifyEventHandler}>MODIFY</button>
+        <ButtonGroup aria-label="Basic example">
+          <Button variant="outline-danger" onClick={deleteEventHandler}>DELETE</Button>
+          <Button variant="outline-success" onClick={modifyEventHandler}>MODIFY</Button>
+        </ButtonGroup>
         <p className="event-time">Event Start: {props.event_start}</p>
       </div>
       <div className="event-info">
         <p className="event-time">Event End: {props.event_end}</p>
       </div>
       <p className="event-text">Description: {props.description}</p>
-      <Link className="event-link" to={"/event/" + props.event_id}> Go event page </Link>
+      <Link className="event-link" to={"/event/" + props.event_id}> Go to event page </Link>
     </div>
   );
 }

@@ -8,7 +8,7 @@ import ModalBody from "react-bootstrap/ModalBody";
 import ModalHeader from "react-bootstrap/ModalHeader";
 import ModalFooter from "react-bootstrap/ModalFooter";
 import ModalTitle from "react-bootstrap/ModalTitle";
-//import { Title } from 'react-bootstrap/Modal'
+import {ButtonGroup} from 'react-bootstrap';
 
 export default function Announcement(props) {
   const [show, setShow] = useState(false);
@@ -59,8 +59,10 @@ export default function Announcement(props) {
         </ModalFooter>
       </Modal>
       <div className="announcement-info">
-      <button className="ann-delete-button" onClick={deleteAnnouncementHandler}>DELETE</button>
-      <button className="ann-modify-button" onClick={modifyAnnouncementHandler}>MODIFY</button>
+        <ButtonGroup aria-label="Basic example">
+          <Button variant="outline-danger" size="sm" onClick={deleteAnnouncementHandler}>DELETE</Button>
+          <Button variant="outline-success" size="sm" onClick={modifyAnnouncementHandler}>MODIFY</Button>
+        </ButtonGroup>
       </div>
       <p className="event-text">{props.announcement_text}</p>
     </div>
