@@ -268,6 +268,28 @@ def create_event():
 
     return jsonify(result=True)
 
+@club_api.route('/club/event/modify', methods=['POST'])
+def modify_event():
+    con, cur = get_connection()
+
+    event_id = request.json['event_id']
+    event_description = request.json['event_description']
+    event_start = request.json['event_start']
+    event_end = request.json['event_end']
+
+    sql = """
+        UPDATE appevent
+        SET event_start = :event_start, event_end = :event_end, event_description = :event_description
+        WHERE event_id = :event_id
+    """
+
+    cur.execute(sql, event_id=event_id, event_start=event_start, event_end=event_end, event_description=event_description)
+
+    con.commit()
+    close(con, cur)
+
+    return jsonify(result=True)
+
 @club_api.route('/announcement/delete/<id>', methods=['DELETE'])
 def delete_announcement(id):
     con, cur = get_connection()
