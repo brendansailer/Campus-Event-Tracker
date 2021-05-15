@@ -257,8 +257,11 @@ def create_event():
     event_end = request.json['event_end']
 
     sql = """
-          INSERT INTO appevent (club_id, event_start, event_end, event_description)
-          VALUES (:club_id, :event_start, :event_end, :event_description)
+        INSERT INTO appevent (club_id, event_start, event_end, event_description)
+        VALUES (:club_id,
+            TO_TIMESTAMP(':event_start', 'dd-mon-yyyy hh:mi:ss'), 
+            TO_TIMESTAMP(':event_end', 'dd-mon-yyyy hh:mi:ss'),
+            :event_description)
     """
 
     cur.execute(sql, club_id=club_id, event_start=event_start, event_end=event_end, event_description=event_description)
