@@ -1,7 +1,6 @@
 .event{
     border-bottom: 1px solid grey;
     border-width: 75%;
-    padding-bottom: 30px;
     padding-top: 30px;
 }
 
@@ -47,4 +46,19 @@
     margin-left: 50px;
     font-family: sans-serif;
     color: white
+}
+
+.rsvp-button {
+    display: flex;
+    justify-content: center;
+}
+
+.rsvp-attending {
+    margin-top: 20px;
+}
+
+
+.rsvp-button button {
+    margin-top: 10px;
+    width: 30%;
 }

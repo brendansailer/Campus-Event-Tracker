@@ -100,11 +100,11 @@ def get_rsvps(id):
 
     rsvps = [RSVP(*rsvp) for rsvp in tuples] # Take the tuples and create Event models which can be serialized by the Event schema
 
-    if not tuples:
-        return {"result": "User does not exist"}
-    else:
-        print(rsvps)
-        return rsvp_schema.jsonify(rsvps, many=True)
+    # if not tuples:
+    #     return {"result": "User does not exist"}
+    # else:
+    print(rsvps)
+    return rsvp_schema.jsonify(rsvps, many=True)
 
 @event_api.route('/event/delete/<id>', methods=['DELETE'])
 def delete_event(id):

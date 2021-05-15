@@ -4,7 +4,7 @@ from marshmallow import fields
 # Membership Schema
 class MembershipItemSchema(ma.Schema):
   class Meta:
-    fields = ('club_id', 'club_name', 'club_description')
+    fields = ('club_id', 'club_name', 'club_description', 'rank')
 
 class MembershipSchema(ma.Schema):
   subscriptions = fields.Nested(MembershipItemSchema, many=True)

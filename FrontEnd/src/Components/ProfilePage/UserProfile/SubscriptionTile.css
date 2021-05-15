@@ -1,3 +1,26 @@
 .subscription-tile {
-    display: flex
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid grey;
+    justify-content: space-between;
+}
+
+.club-name p {
+    text-align: left;
+}
+
+em { 
+    font-size: 70%;
+}
+
+.buttons {
+    align-self: flex-end;
+}
+.delete-club {
+    padding: 10px;
+    margin: 10px;
+}
+
+.leave-club {
+    padding: 10px;
 }

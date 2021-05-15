@@ -11,7 +11,7 @@ membership_api = Blueprint('membership_api', __name__)
 def get_subscriptions(user_id):
     con, cur = get_connection()
 
-    sql = """SELECT m.club_id, c.club_name, c.club_description
+    sql = """SELECT m.club_id, c.club_name, c.club_description, m.rank
             FROM membership m
             JOIN club c
                 ON m.club_id = c.club_id
