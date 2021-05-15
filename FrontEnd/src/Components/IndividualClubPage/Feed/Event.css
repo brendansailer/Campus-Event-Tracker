@@ -1,8 +1,9 @@
-.event{
+.event-single{
     border-bottom: 1px solid grey;
     border-width: 75%;
     padding-bottom: 30px;
     padding-top: 30px;
+    cursor:pointer;
 }
 
 .event-image {
