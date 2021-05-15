@@ -12,7 +12,7 @@ def get_events():
     con, cur = get_connection()
 
     sql = """
-            SELECT e.event_id, e.club_id, e.event_start, e.event_end, e.event_description, e.img_url, c.club_name, e.location
+            SELECT e.event_id, e.club_id, e.event_start, e.event_end, e.event_description, e.img_url, c.club_name, e.location, e.title
             FROM appevent e
             JOIN club c on c.club_id = e.club_id
           """
@@ -31,7 +31,7 @@ def get_event(id):
     con, cur = get_connection()
 
     sql = """
-            SELECT e.event_id, e.club_id, e.event_start, e.event_end, e.event_description, e.img_url, c.club_name, e.location
+            SELECT e.event_id, e.club_id, e.event_start, e.event_end, e.event_description, e.img_url, c.club_name, e.location, e.title
             FROM appevent e
             JOIN club c on c.club_id = e.club_id
             WHERE event_id = :id
@@ -53,7 +53,7 @@ def get_event_random():
 
     sql = """
             SELECT * FROM
-            (SELECT e.event_id, e.club_id, e.event_start, e.event_end, e.event_description, e.img_url, c.club_name, e.location
+            (SELECT e.event_id, e.club_id, e.event_start, e.event_end, e.event_description, e.img_url, c.club_name, e.location, e.title
             FROM appevent e
             JOIN club c on c.club_id = e.club_id
             ORDER BY dbms_random.value)
@@ -126,7 +126,7 @@ def get_club_events(user_id):
     con, cur = get_connection()
 
     sql = """
-             SELECT e.event_id, e.club_id, e.event_start, e.event_end, e.event_description, e.img_url, c.club_name, e.location
+             SELECT e.event_id, e.club_id, e.event_start, e.event_end, e.event_description, e.img_url, c.club_name, e.location, e.title
              FROM appevent e
              JOIN membership m on m.club_id = e.club_id
              JOIN club c on c.club_id = e.club_id
