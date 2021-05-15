@@ -13,4 +13,5 @@ CREATE TABLE rsvp (
     CONSTRAINT event_fk
         FOREIGN KEY (event_id)
         REFERENCES appevent(event_id)
+        ON DELETE CASCADE
 );
