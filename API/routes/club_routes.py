@@ -259,8 +259,8 @@ def create_event():
     sql = """
         INSERT INTO appevent (club_id, event_start, event_end, event_description)
         VALUES (:club_id,
-            TO_TIMESTAMP(':event_start', 'dd-mon-yyyy hh:mi:ss'), 
-            TO_TIMESTAMP(':event_end', 'dd-mon-yyyy hh:mi:ss'),
+            TO_TIMESTAMP(:event_start, 'dd-mon-yyyy hh24:mi:ss'), 
+            TO_TIMESTAMP(:event_end, 'dd-mon-yyyy hh24:mi:ss'),
             :event_description)
     """
 
