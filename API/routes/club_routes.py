@@ -183,6 +183,31 @@ def create_announcement():
 
     return jsonify(result=True)
 
+@club_api.route('/club/announcement/modify', methods=['POST'])
+def modify_announcement():
+    con, cur = get_connection()
+
+    id = request.json['announcement_id']
+    text = request.json['announcement_text']
+
+    sql = """
+        UPDATE announcement
+        SET announcement_text = :text
+        WHERE announcement_id = id
+    """
+
+    try:
+        cur.execute(sql, id=id, text=text)
+    except:
+        con.commit()
+        close(con, cur)
+        return jsonify(result=False)
+
+    con.commit()
+    close(con, cur)
+
+    return jsonify(result=True)
+
 @club_api.route('/club/event/<id>', methods=['GET'])
 def get_events(id):
     con, cur = get_connection()
