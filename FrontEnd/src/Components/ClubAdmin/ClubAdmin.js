@@ -10,6 +10,7 @@ import ClubMembers from "./ClubMembership/ClubMembership";
 import { getCurrentUser } from "../../Common/Services/AuthService";
 import { getDBUser } from "../../Common/Services/UserService";
 import { getClubMembers } from "../../Common/Services/MembershipService";
+import { getDateString } from "../../Common/Services/DateService";
 
 
 const ClubAdmin = (props) => {
@@ -59,7 +60,7 @@ const ClubAdmin = (props) => {
           <Nav></Nav>
         </div>
         <div className={show ? 'hidden' : "club-admin-feed-container"}>
-            <h2 className="club-admin-header">{club.club_name} Admin</h2>
+            <h2 className="club-admin-header">{club.club_name} Admin Page</h2>
                 <NewEvent
                   clubId = {props.match.params.clubId}
                 />

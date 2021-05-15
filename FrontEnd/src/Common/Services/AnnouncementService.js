@@ -17,7 +17,7 @@ export const createAnnouncement = (newAnnouncement) => {
           expires_at: newAnnouncement.expires_at,
         })
     }).then(response => response.json())
-  }
+}
 
 export const getClubAnnouncements = (clubId) => {
   return fetch('/club/announcement/' + clubId, {
@@ -44,5 +44,24 @@ export const deleteAnnouncement = (clubId) => {
     },
     redirect: 'follow', // manual, *follow, error
     referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+  }).then(response => response.json())
+}
+
+export const modifyAnnouncement = (ann_desc, ann_id) => {
+  return fetch('/club/announcement/modify', {
+    method: 'POST', // *GET, POST, PUT, DELETE, etc.
+    mode: 'cors', // no-cors, *cors, same-origin
+    cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+    credentials: 'same-origin', // include, *same-origin, omit
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    redirect: 'follow', // manual, *follow, error
+    referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+    body: JSON.stringify(
+      { 
+        announcement_text: ann_desc,
+        announcement_id: ann_id
+      })
   }).then(response => response.json())
 }

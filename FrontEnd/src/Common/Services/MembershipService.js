@@ -1,5 +1,3 @@
-import { dateFnsLocalizer } from "react-big-calendar"
-
 export const getClubMembers = (clubId) => {
     return fetch('/club/members/' + clubId, {
       method: 'GET', // *GET, POST, PUT, DELETE, etc.

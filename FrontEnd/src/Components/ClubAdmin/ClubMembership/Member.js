@@ -3,9 +3,7 @@ import React from "react";
 //import { Link } from "react-router-dom";
 import "./Member.css";
 import { useState, useEffect } from "react";
-import ProfilePage from "../../ProfilePage/ProfilePage";
 import {ButtonGroup, Button } from 'react-bootstrap';
-import { propTypes } from "react-bootstrap/esm/Image";
 import { makeAdmin, demoteAdmin } from "../../../Common/Services/MembershipService"
 
 export default function Member(props) {
@@ -22,7 +20,7 @@ export default function Member(props) {
     } else {
         setShow(false);
     }
-  }, [props.dbUser])
+  }, [props.dbUser, props.member_id])
 
   function makeAdminHandler(e) {
     setAdmin(true);

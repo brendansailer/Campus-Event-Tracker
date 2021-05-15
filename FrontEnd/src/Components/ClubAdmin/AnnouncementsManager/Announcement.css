@@ -49,3 +49,32 @@
     border-radius: 12px;
     border: 2px solid grey; /* Green */
 }
+
+.ann-modify-button{
+    background-color: green;
+    color: white;
+    font-family: "Poppins";
+    padding: 1px 16px;
+    border-radius: 12px;
+    border: 2px solid grey; /* Green */
+}
+
+.modal-header {
+    padding:9px 15px;
+    border-bottom:1px solid #eee;
+    background-color: grey;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+ }
+
+.modal-body {
+    background-color: grey;
+}
+
+.modal-footer {
+    background-color: grey;
+}

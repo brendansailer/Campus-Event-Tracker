@@ -9,20 +9,9 @@ import { createEvent } from "../../../Common/Services/EventService";
 import { getDateString } from "../../../Common/Services/DateService";
 
 const NewEvent = (props) => {
-  //var currentUser = getCurrentUser();
-  //const [dbUser, setDbUser] = useState({});
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   const [eventDescription, setEventDescription] = useState();
-
-  /*
-  useEffect(() => {
-    getDBUser(currentUser.get("username"), currentUser.get("email"))
-      .then((user) => {
-        setDbUser(user);
-      })
-  }, [currentUser])
-  */
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
