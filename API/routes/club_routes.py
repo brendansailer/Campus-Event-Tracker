@@ -254,7 +254,6 @@ def create_event():
     event_description = request.json['event_description']
     event_start = request.json['event_start']
     event_end = request.json['event_end']
-    location = request.json['']
 
     sql = """
           INSERT INTO appevent (club_id, event_start, event_end, event_description)
