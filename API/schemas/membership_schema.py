@@ -9,5 +9,11 @@ class MembershipItemSchema(ma.Schema):
 class MembershipSchema(ma.Schema):
   subscriptions = fields.Nested(MembershipItemSchema, many=True)
 
+# Membership Schema
+class MemberItemSchema(ma.Schema):
+  class Meta:
+    fields = ('user_id', 'username', 'rank')
+
 # Init schema
 membership_schema = MembershipSchema() 
+individual_membership_schema = MemberItemSchema(many=True)

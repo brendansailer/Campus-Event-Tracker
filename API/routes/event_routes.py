@@ -106,6 +106,21 @@ def get_rsvps(id):
     print(rsvps)
     return rsvp_schema.jsonify(rsvps, many=True)
 
+@event_api.route('/event/delete/<id>', methods=['DELETE'])
+def delete_event(id):
+    con, cur = get_connection()
+
+    sql = """
+          DELETE FROM appevent
+          WHERE event_id = :id
+    """
+
+    cur.execute(sql, id=id)
+    con.commit()
+    cur.close()
+
+    return jsonify(result=True)
+
 @event_api.route('/event/clubevents/<user_id>', methods=['GET'])
 def get_club_events(user_id):
     con, cur = get_connection()

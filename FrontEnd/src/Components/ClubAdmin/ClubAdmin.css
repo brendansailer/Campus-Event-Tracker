@@ -1,0 +1,97 @@
+.club-admin-feed-container{
+    height: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    overflow: auto;
+}
+
+.club-admin-discover-container{
+    height: 100%;
+    padding: 10px;
+}
+
+.club-admin-nav-container {
+    height: 100%;
+    padding: 10px;
+}
+
+.grid-container{
+    height: 100%;
+}
+
+/*Media Query for Mobile Devices*/
+@media (max-width: 480px) {
+    .grid-container{
+        display: grid;
+        grid-template-rows: 130px auto;
+    }
+
+    .club-admin-discover-container{
+        display: none;
+    }
+}
+
+/*Media Query for iPads & Tablets*/
+@media (min-width:481px) and (max-width: 730px) {
+      .page {
+          height: 100vh;
+          width: 100vw;
+      }
+    .grid-container{
+        display: grid;
+        grid-template-columns: 130px auto;
+    }
+
+    .club-admin-discover-container{
+        display: none;
+    }
+}
+
+/*Media Query for smaller screens*/
+@media (min-width:731px) and (max-width: 975px) {
+      .page {
+          height: 100vh;
+          width: 100vw;
+      }
+
+    .grid-container{
+        display: grid;
+        grid-template-columns: auto 575px;
+
+    }
+
+    .club-admin-discover-container{
+        display: none;
+    }
+}
+
+/*Media Query for medium*/
+@media (min-width:976px) and (max-width: 1200px) {
+      .page {
+          height: 100vh;
+          width: 100vw;
+      }
+    .grid-container{
+        display: grid;
+        grid-template-columns: auto 575px 325px;
+
+    }
+}
+
+
+/*CSS Media Query for larger screens */
+@media (min-width:1201px) {
+    .page{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        width: 100vw;
+    }
+
+    .grid-container{
+        display: grid;
+        grid-template-columns: 300px 575px 325px;
+    
+    }
+}

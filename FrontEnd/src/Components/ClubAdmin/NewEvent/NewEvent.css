@@ -1,0 +1,47 @@
+.new-event{
+    border-bottom: 3px solid grey;
+    border-width: 75%;
+    padding-bottom: 30px;
+    padding-top: 30px;
+}
+
+.event-image {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    border-radius: 50%;
+    display: block;
+}
+
+.event-info{
+    margin-left: 50px;
+    margin-right: 50px;
+    display: flex;
+    align-items: flex-end
+}
+
+.event-club {
+    font-family: "Poppins";
+    font-size: 1.25em;
+    font-weight: 500;
+}
+
+.event-time {
+    margin-left: auto;
+    font-family: sans-serif;
+}
+
+.event-text{
+    padding: 0;
+    margin-top: 10px;
+    margin-left: 50px;
+    font-family: sans-serif;
+    color: white
+}
+
+.event-link{
+    padding: 0;
+    margin-top: 10px;
+    margin-left: 50px;
+    font-family: sans-serif;
+}

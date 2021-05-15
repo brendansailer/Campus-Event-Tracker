@@ -184,6 +184,33 @@ def create_announcement():
 
     return jsonify(result=True)
 
+@club_api.route('/club/announcement/modify', methods=['POST'])
+def modify_announcement():
+    con, cur = get_connection()
+    print(request.json)
+    print("BUFFER")
+
+    text = request.json['announcement_text']
+    ann_id = request.json['announcement_id']
+
+    sql = """
+        UPDATE announcement
+        SET announcement_text = :text
+        WHERE announcement_id = :id
+    """
+
+    try:
+        cur.execute(sql, id=ann_id, text=text)
+    except:
+        con.commit()
+        close(con, cur)
+        return jsonify(result=False)
+
+    con.commit()
+    close(con, cur)
+
+    return jsonify(result=True)
+
 @club_api.route('/club/event/<id>', methods=['GET'])
 def get_events(id):
     con, cur = get_connection()
@@ -228,7 +255,6 @@ def create_event():
     event_description = request.json['event_description']
     event_start = request.json['event_start']
     event_end = request.json['event_end']
-    location = request.json['']
 
     sql = """
           INSERT INTO appevent (club_id, event_start, event_end, event_description)
@@ -239,5 +265,42 @@ def create_event():
 
     con.commit()
     close(con, cur)
+
+    return jsonify(result=True)
+
+@club_api.route('/club/event/modify', methods=['POST'])
+def modify_event():
+    con, cur = get_connection()
+
+    event_id = request.json['event_id']
+    event_description = request.json['event_description']
+    event_start = request.json['event_start']
+    event_end = request.json['event_end']
+
+    sql = """
+        UPDATE appevent
+        SET event_start = :event_start, event_end = :event_end, event_description = :event_description
+        WHERE event_id = :event_id
+    """
+
+    cur.execute(sql, event_id=event_id, event_start=event_start, event_end=event_end, event_description=event_description)
+
+    con.commit()
+    close(con, cur)
+
+    return jsonify(result=True)
+
+@club_api.route('/announcement/delete/<id>', methods=['DELETE'])
+def delete_announcement(id):
+    con, cur = get_connection()
+
+    sql = """
+          DELETE FROM announcement
+          WHERE announcement_id = :id
+    """
+
+    cur.execute(sql, id=id)
+    con.commit()
+    cur.close()
 
     return jsonify(result=True)
