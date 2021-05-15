@@ -186,6 +186,8 @@ def create_announcement():
 @club_api.route('/club/announcement/modify', methods=['POST'])
 def modify_announcement():
     con, cur = get_connection()
+    print(request.json)
+    print("BUFFER")
 
     text = request.json['announcement_text']
     ann_id = request.json['announcement_id']
