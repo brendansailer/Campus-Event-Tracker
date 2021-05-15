@@ -38,7 +38,7 @@ const ClubAdmin = (props) => {
   useEffect(() => {
     getClubMembers(props.match.params.clubId).then(response => response.json()).then(data => {
         data.forEach(element => {
-          if(element.user_id === dbUser && element.rank == "1") {
+          if(element.user_id === dbUser && String(element.rank) === "1") {
             setShow(false);
           }
         });

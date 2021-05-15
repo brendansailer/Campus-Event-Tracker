@@ -11,11 +11,11 @@ export default function Member(props) {
   const [admin, setAdmin] = useState(false);
 
   useEffect(() => {
-    setAdmin(props.member_rank == "1");
+    setAdmin(String(props.member_rank) === "1");
   }, [props.member_rank])
 
   useEffect(() => {
-    if(props.dbUser == props.member_id) {
+    if(props.dbUser === props.member_id) {
         setShow(true);
     } else {
         setShow(false);
