@@ -67,6 +67,7 @@ function IndividualEventPage(props) {
             rsvp={rsvp || buttonPressed}
             onRSVP={onRSVP(userId, event.event_id, "YES")}
             location={event.location}
+            title={event.title}
           />
         </div>
       </div>

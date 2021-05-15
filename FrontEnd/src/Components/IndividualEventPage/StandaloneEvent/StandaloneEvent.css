@@ -62,3 +62,13 @@
     margin-top: 10px;
     width: 30%;
 }
+
+.back-button {
+    display: flex;
+    justify-content: center;
+}
+
+.back-button button {
+    margin-top: 10px;
+    width: 30%;
+}

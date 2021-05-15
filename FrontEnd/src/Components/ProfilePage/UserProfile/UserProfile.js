@@ -15,6 +15,7 @@ export default function UserProfile() {
   const currentUser = getCurrentUser();
 
   useEffect(() => {
+    setOption("clubs")
     getDBUser(currentUser.get("username"), currentUser.get("email"))
       .then((user) => {
         setDbUser(user)

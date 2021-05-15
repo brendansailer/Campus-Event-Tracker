@@ -90,7 +90,7 @@ def get_club_by_topic(user_id):
         topic = cur.fetchone()
         topic_name = topic[0]
 
-        club_fragments.append({"topic": topic_name, "clubs": [ClubUser(*club) for club in clubs]})
+        club_fragments.append({"topic": topic_name, "topic_id": topic_id, "clubs": [ClubUser(*club) for club in clubs]})
 
     close(con, cur)
 
@@ -219,7 +219,7 @@ def get_events(id):
     con, cur = get_connection()
 
     sql = """
-        SELECT e.event_id, e.club_id, TO_CHAR(e.event_start, 'HH:MI PM DY MON DD'), TO_CHAR(e.event_end, 'HH:MI PM DY MON DD'), e.event_description, e.img_url, c.club_name, e.location
+        SELECT e.event_id, e.club_id, e.event_start, e.event_end, e.event_description, e.img_url, c.club_name, e.location, e.title
         FROM appevent e
         JOIN club c on c.club_id = e.club_id
         WHERE e.club_id = :id
@@ -258,16 +258,20 @@ def create_event():
     event_description = request.json['event_description']
     event_start = request.json['event_start']
     event_end = request.json['event_end']
+    location = request.json['location']
+    title = request.json['title']
 
     sql = """
-        INSERT INTO appevent (club_id, event_start, event_end, event_description)
+        INSERT INTO appevent (club_id, event_start, event_end, event_description, location, title)
         VALUES (:club_id,
             TO_TIMESTAMP(:event_start, 'dd-mon-yyyy hh24:mi:ss'), 
             TO_TIMESTAMP(:event_end, 'dd-mon-yyyy hh24:mi:ss'),
-            :event_description)
+            :event_description,
+            :location,
+            :title)
     """
 
-    cur.execute(sql, club_id=club_id, event_start=event_start, event_end=event_end, event_description=event_description)
+    cur.execute(sql, club_id=club_id, event_start=event_start, event_end=event_end, event_description=event_description, location=location, title=title)
 
     con.commit()
     close(con, cur)
@@ -282,14 +286,16 @@ def modify_event():
     event_description = request.json['event_description']
     event_start = request.json['event_start']
     event_end = request.json['event_end']
+    location = request.json['location']
+    title = request.json['title']
 
     sql = """
         UPDATE appevent
-        SET event_start = :event_start, event_end = :event_end, event_description = :event_description
+        SET event_start = :event_start, event_end = :event_end, event_description = :event_description, location = :location, title = :title
         WHERE event_id = :event_id
     """
 
-    cur.execute(sql, event_id=event_id, event_start=event_start, event_end=event_end, event_description=event_description)
+    cur.execute(sql, event_id=event_id, event_start=event_start, event_end=event_end, event_description=event_description, location=location, title=title)
 
     con.commit()
     close(con, cur)
