@@ -14,6 +14,7 @@ export default function Event(props) {
       <div className="event-info">
         <h2 className="event-club">{props.club_name}</h2>
       </div>
+      <p className="event-text">{props.title}</p>
       <div className="event-info">
           <h5 className="event-time">{props.event_start} - {props.event_end}</h5>
       </div>

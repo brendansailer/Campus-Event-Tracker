@@ -90,7 +90,7 @@ def get_club_by_topic(user_id):
         topic = cur.fetchone()
         topic_name = topic[0]
 
-        club_fragments.append({"topic": topic_name, "topic_id": topic_id, clubs": [ClubUser(*club) for club in clubs]})
+        club_fragments.append({"topic": topic_name, "topic_id": topic_id, "clubs": [ClubUser(*club) for club in clubs]})
 
     close(con, cur)
 

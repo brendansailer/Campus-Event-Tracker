@@ -10,6 +10,9 @@ export default function StandaloneEvent(props) {
     <div className="event">
       {props.event_img && <img className="event-image" src={props.event_img} alt="profile"></img>}
       <div className="event-info">
+        <h2 className="event-club">Title: {props.title}</h2>
+      </div>
+      <div className="event-info">
         <h2 className="event-club">HOST: {props.club_name}</h2>
       </div>
       <div>

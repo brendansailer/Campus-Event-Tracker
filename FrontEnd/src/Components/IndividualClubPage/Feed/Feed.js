@@ -102,6 +102,7 @@ export default function Feed(props) {
                 event_end={moment(event.end_time).format("LT")}
                 club_name={event.club_name}
                 event_id={event.event_id}
+                title={event.title}
               />
             ))}
           </div>

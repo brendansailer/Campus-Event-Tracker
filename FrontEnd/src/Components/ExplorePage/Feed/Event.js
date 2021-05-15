@@ -15,6 +15,7 @@ export default function Event(props) {
         <h2 className="event-club-name"> {props.club_name} </h2>
       </div>
       <div onClick={goToPage("/event/" + props.event_id)}>
+        <p className="event-text">{props.title}</p>
         <div className="event-info">
           <h5 className="event-time">{props.event_start} - {props.event_end}</h5>
         </div>
