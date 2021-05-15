@@ -173,8 +173,11 @@ def create_announcement():
 
 
     sql = """
-          INSERT INTO announcement (club_id, announcement_text, created_at, expires_at)
-          VALUES (:club_id, :announcement_text, :created_at, :expires_at)
+        INSERT INTO announcement (club_id, announcement_text, created_at, expires_at)
+        VALUES (:club_id, 
+            :announcement_text, 
+            TO_TIMESTAMP(:created_at, 'dd-mon-yyyy hh24:mi:ss'),
+            TO_TIMESTAMP(:expires_at, 'dd-mon-yyyy hh24:mi:ss'))
     """
 
     cur.execute(sql, club_id=club_id, announcement_text=announcement_text, created_at=created_at, expires_at=expires_at)
