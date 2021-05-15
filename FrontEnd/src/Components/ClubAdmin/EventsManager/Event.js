@@ -2,7 +2,7 @@ import React from "react";
 import "./Event.css";
 import { Link } from "react-router-dom";
 import { deleteEvent, modifyEvent } from "../../../Common/Services/EventService";
-import { getDateString } from "../../../Common/Services/DateService";
+import { getDateString, getPrettyDateString } from "../../../Common/Services/DateService";
 import { useState } from "react";
 import { Modal, Button} from 'react-bootstrap';
 import ModalBody from "react-bootstrap/ModalBody";
@@ -18,6 +18,9 @@ export default function Event(props) {
   const [eventDescription, setEventDescription] = useState();
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
+  const [viewableEventDescription, setViewableEventDescription] = useState(props.description);
+  const [viewableStartDate, setViewableStartDate] = useState(props.event_start);
+  const [viewableEndDate, setViewableEndDate] = useState(props.event_end);
 
   function deleteEventHandler(e) {
     e.preventDefault();
@@ -37,6 +40,9 @@ export default function Event(props) {
     modifyEvent(props.event_id, eventDescription, start_string, end_string).then((value) => {
       console.log(value);
     });
+    setViewableEventDescription(eventDescription);
+    setViewableStartDate(getPrettyDateString(startDate));
+    setViewableEndDate(getPrettyDateString(endDate));
   }
 
   const handleClose = () => setShowModifyModal(false);
@@ -84,12 +90,12 @@ export default function Event(props) {
           <Button variant="outline-danger" onClick={deleteEventHandler}>DELETE</Button>
           <Button variant="outline-warning" onClick={modifyEventHandler}>MODIFY</Button>
         </ButtonGroup>
-        <p className="event-time">Event Start: {props.event_start}</p>
+        <p className="event-time">Event Start: {viewableStartDate}</p>
       </div>
       <div className="event-info">
-        <p className="event-time">Event End: {props.event_end}</p>
+        <p className="event-time">Event End: {viewableEndDate}</p>
       </div>
-      <p className="event-text">Description: {props.description}</p>
+      <p className="event-text">Description: {viewableEventDescription}</p>
       <Link className="event-link" to={"/event/" + props.event_id}> Go to event page </Link>
     </div>
   );
