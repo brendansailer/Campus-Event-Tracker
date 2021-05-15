@@ -188,7 +188,7 @@ def modify_announcement():
     con, cur = get_connection()
 
     text = request.json['announcement_text']
-    id = request.json['announcement_id']
+    ann_id = request.json['announcement_id']
 
     sql = """
         UPDATE announcement
@@ -197,7 +197,7 @@ def modify_announcement():
     """
 
     try:
-        cur.execute(sql, id=id, text=text)
+        cur.execute(sql, id=ann_id, text=text)
     except:
         con.commit()
         close(con, cur)
