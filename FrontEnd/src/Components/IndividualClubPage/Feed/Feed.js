@@ -82,7 +82,7 @@ export default function Feed(props) {
           {isMember ? <h3>subscribed</h3> : <h3><Button className="subscribe-btn" onClick={subscribe}>Join <FontAwesomeIcon icon={faPlus} /></Button></h3>}
         </div>
       </div>
-      {events ? 
+      {events && events.length === 0 ? 
         <div className="feed">
           <p className="feed-text">No Events</p>
           <p className="feed-text-small">Check Back Later</p>
