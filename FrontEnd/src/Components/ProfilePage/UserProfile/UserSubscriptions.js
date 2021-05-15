@@ -29,11 +29,8 @@ export default function UserSubscriptions(props) {
     setSubscriptions(subs) // Update the subscriptions
   };
 
-  const deleteClub = (club_id) => () => {
-    var subs = [...subscriptions] // Create a copy of the subscriptions
-    var index = subs.map(function(s) {return s.club_id}).indexOf(club_id) // Get the index of the club to remove
-    subs.splice(index, 1) // Remove it
-    setSubscriptions(subs) // Update the subscriptions
+  const manageClub = (club_id) => () => {
+    window.location.href='/admin/' + club_id;
   };
 
   return (
@@ -46,7 +43,7 @@ export default function UserSubscriptions(props) {
             club_name={subscription.club_name}
             club_description={subscription.club_description}
             rank={subscription.rank}
-            deleteClub={deleteClub(subscription.club_id)}
+            deleteClub={manageClub(subscription.club_id)}
             eventHandler={unsubscribe(subscription.club_id)}
           />
         ))}
