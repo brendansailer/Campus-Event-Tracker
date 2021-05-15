@@ -187,13 +187,13 @@ def create_announcement():
 def modify_announcement():
     con, cur = get_connection()
 
-    id = request.json['announcement_id']
     text = request.json['announcement_text']
+    id = request.json['announcement_id']
 
     sql = """
         UPDATE announcement
         SET announcement_text = :text
-        WHERE announcement_id = id
+        WHERE announcement_id = :id
     """
 
     try:
