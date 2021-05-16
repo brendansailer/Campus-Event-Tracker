@@ -14,7 +14,9 @@ export const createEvent = (newEvent) => {
           club_id: newEvent.club_id, 
           event_start: newEvent.event_start, 
           event_end: newEvent.event_end,
-          event_description: newEvent.event_description
+          event_description: newEvent.event_description,
+          title: newEvent.title,
+          location: newEvent.location
         })
     }).then(response => response.json())
 }

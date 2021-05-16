@@ -13,6 +13,8 @@ const NewEvent = (props) => {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   const [eventDescription, setEventDescription] = useState();
+  const [eventTitle, setEventTitle] = useState();
+  const [eventLocation, setEventLocation] = useState();
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -23,7 +25,9 @@ const NewEvent = (props) => {
         club_id: props.clubId, 
         event_start: start_string, 
         event_end: end_string,
-        event_description: eventDescription
+        event_description: eventDescription,
+        title: eventTitle,
+        location: eventLocation
       }).then((value) => {
         console.log(value);
         document.getElementById("event-form").reset();
@@ -35,11 +39,23 @@ const NewEvent = (props) => {
     <div className="new-event">
         <h3>Create New Event</h3>
             <form id="event-form" onSubmit={e => {handleSubmit(e)}}>
+              <h4>Event Title: </h4>
+              <input
+              name='sample'
+              type='text'
+              onChange={e => setEventTitle(e.target.value)}
+              />
               <h4>Event Description: </h4>
               <input
               name='sample'
               type='text'
               onChange={e => setEventDescription(e.target.value)}
+              />
+              <h4>Event Location: </h4>
+              <input
+              name='sample'
+              type='text'
+              onChange={e => setEventLocation(e.target.value)}
               />
               <br />
               <h4>Start Time: </h4>
