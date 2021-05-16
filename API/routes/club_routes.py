@@ -291,7 +291,7 @@ def modify_event():
 
     sql = """
         UPDATE appevent
-        SET event_start = :event_start, event_end = :event_end, event_description = :event_description, location = :location, title = :title
+        SET event_start = TO_TIMESTAMP(:event_start, 'dd-mon-yyyy hh24:mi:ss'), event_end = TO_TIMESTAMP(:event_end, 'dd-mon-yyyy hh24:mi:ss'), event_description = :event_description, location = :location, title = :title
         WHERE event_id = :event_id
     """
 

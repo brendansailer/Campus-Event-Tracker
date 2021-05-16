@@ -14,7 +14,7 @@ export default function SubscriptionTile(props) {
     <div className="subscription-tile">
       <span className="club-name"><p>{props.club_name}</p><p className="rank-text"><em>{rankText(props.rank)}</em></p></span>
       <div className="buttons">
-      {props.rank === "1" && <Button className="delete-club" onClick={props.deleteClub} variant="warning">Delete Club</Button>}
+      {props.rank === "1" && <Button className="delete-club" onClick={props.deleteClub} variant="warning">Manage Club</Button>}
       <Button className="leave-club" onClick={props.eventHandler} variant="secondary">Leave Club</Button>
       </div>
     </div>

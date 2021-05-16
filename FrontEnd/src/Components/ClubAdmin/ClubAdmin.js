@@ -10,6 +10,7 @@ import ClubMembers from "./ClubMembership/ClubMembership";
 import { getCurrentUser } from "../../Common/Services/AuthService";
 import { getDBUser } from "../../Common/Services/UserService";
 import { getClubMembers } from "../../Common/Services/MembershipService";
+import AdminToggle from "./AdminToggle"
 
 
 const ClubAdmin = (props) => {
@@ -17,6 +18,11 @@ const ClubAdmin = (props) => {
   const [dbUser, setDbUser] = useState({});
   const [show, setShow] = useState(true);
   const currentUser = getCurrentUser();
+  const [option, setOption] = useState("");
+
+  const toggleClickHandler = (selection) => () => {
+    setOption(selection)
+  }
 
   useEffect(() => {
     fetch('/club/' + props.match.params.clubId, {
@@ -60,18 +66,19 @@ const ClubAdmin = (props) => {
         </div>
         <div className={show ? 'hidden' : "club-admin-feed-container"}>
             <h2 className="club-admin-header">{club.club_name} Admin Page</h2>
-                <NewEvent
+              <AdminToggle clickHandler={toggleClickHandler}></AdminToggle> 
+                {option === "create_event" && <NewEvent
                   clubId = {props.match.params.clubId}
-                />
-                <NewAnnouncement
+                /> }
+                {option === "create_announcement" && <NewAnnouncement
                   clubId = {props.match.params.clubId}
-                />
-                <EventsManager
+                />}
+                {option === "manage_events" && <EventsManager
                   clubId = {props.match.params.clubId}
-                />
-                <AnnouncementsManager
+                />}
+                {option === "manage_announcements" && <AnnouncementsManager
                   clubId = {props.match.params.clubId}
-                />
+                />}
         </div>
         <div className={show ? 'hidden' : "club-admin-discover-container"}>
         <ClubMembers
