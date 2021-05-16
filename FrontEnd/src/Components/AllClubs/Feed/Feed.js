@@ -38,7 +38,7 @@ export default function Feed() {
       <div className="big-feed">
         {topics.map((topic) => (
           <TopicSection
-            key={topic.topic}
+            key={topic.topic_id}
             topic={topic.topic}
             clubs={topic.clubs}
           />
