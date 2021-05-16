@@ -1,0 +1,11 @@
+.admin-toggle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 10px;
+  }
+
+.toggle-group {
+    margin: auto;
+    width: 95%;
+  }
