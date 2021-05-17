@@ -41,21 +41,24 @@ const NewEvent = (props) => {
             <form id="event-form" onSubmit={e => {handleSubmit(e)}}>
               <h4>Event Title: </h4>
               <input
-              name='sample'
+              name='event_title'
               type='text'
+              className="form-control form-text"
               onChange={e => setEventTitle(e.target.value)}
               />
               <h4>Event Description: </h4>
               <input
-              name='sample'
-              type='text'
-              onChange={e => setEventDescription(e.target.value)}
+                name='event_desc'
+                type='text'
+                className="form-control form-text"
+                onChange={e => setEventDescription(e.target.value)}
               />
               <h4>Event Location: </h4>
               <input
-              name='sample'
-              type='text'
-              onChange={e => setEventLocation(e.target.value)}
+                name='event_location'
+                type='text'
+                className="form-control form-text"
+                onChange={e => setEventLocation(e.target.value)}
               />
               <br />
               <h4>Start Time: </h4>
@@ -64,6 +67,7 @@ const NewEvent = (props) => {
                 onChange={date => setStartDate(date)}
                 timeInputLabel="Time:"
                 showTimeInput
+                className="form-control form-text"
               />
               <h4>End Time: </h4>
               <DatePicker 
@@ -71,9 +75,10 @@ const NewEvent = (props) => {
                 onChange={date => setEndDate(date)}
                 timeInputLabel="Time:"
                 showTimeInput
+                className="form-control club-text-name"
               />
               <br />
-              <Button variant="outline-warning" onClick={handleSubmit}>Create Event</Button>
+              <Button className="event-submit-button" variant="outline-warning" onClick={handleSubmit}>Create Event</Button>
             </form>
     </div>
   );

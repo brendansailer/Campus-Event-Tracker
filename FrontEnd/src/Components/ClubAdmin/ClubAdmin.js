@@ -64,7 +64,7 @@ const ClubAdmin = (props) => {
         <div className="club-admin-nav-container">
           <Nav></Nav>
         </div>
-        <div className={show ? 'hidden' : "club-admin-feed-container"}>
+        { !show && <div className="club-admin-feed-container">
             <h2 className="club-admin-header">{club.club_name} Admin Page</h2>
               <AdminToggle clickHandler={toggleClickHandler}></AdminToggle> 
                 {option === "create_event" && <NewEvent
@@ -79,13 +79,13 @@ const ClubAdmin = (props) => {
                 {option === "manage_announcements" && <AnnouncementsManager
                   clubId = {props.match.params.clubId}
                 />}
-        </div>
-        <div className={show ? 'hidden' : "club-admin-discover-container"}>
+        </div> }
+        { !show && <div className="club-admin-discover-container">
         <ClubMembers
                   clubId = {props.match.params.clubId}
                   dbUser = {dbUser}
                 />
-        </div>
+        </div> }
       </div>
     </div>
   );

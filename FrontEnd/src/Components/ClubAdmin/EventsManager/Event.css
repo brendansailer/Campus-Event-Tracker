@@ -16,7 +16,7 @@
 }
 
 .event-info{
-    margin-left: 50px;
+    margin-left: 10px;
     margin-right: 50px;
     display: flex;
     align-items: flex-end
@@ -36,7 +36,23 @@
 .event-text{
     padding: 0;
     margin-top: 10px;
-    margin-left: 50px;
+    margin-left: 10px;
+    font-family: sans-serif;
+    color: white
+}
+
+.event-location{
+    padding: 0;
+    margin-top: 10px;
+    margin-left: 10px;
+    font-family: sans-serif;
+    color: #989898
+}
+
+.event-title{
+    padding: 0;
+    margin-top: 10px;
+    margin-left: 10px;
     font-family: sans-serif;
     color: white
 }

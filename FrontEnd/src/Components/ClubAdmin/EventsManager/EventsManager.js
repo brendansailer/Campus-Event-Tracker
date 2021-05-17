@@ -28,6 +28,8 @@ const EventsManager = (props) => {
             event_end={event.end_time}
             club_name={event.club_name}
             event_id={event.event_id}
+            title={event.title}
+            location={event.location}
           />
         ))}
     </div>

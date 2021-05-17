@@ -20,7 +20,7 @@ export const createEvent = (newEvent) => {
         })
     }).then(response => response.json())
 }
-export const modifyEvent = (event_id, eventDescription, start_string, end_string) => {
+export const modifyEvent = (event_id, eventDescription, start_string, end_string, location, title) => {
   return fetch('/club/event/modify', {
     method: 'POST', // *GET, POST, PUT, DELETE, etc.
     mode: 'cors', // no-cors, *cors, same-origin
@@ -36,7 +36,9 @@ export const modifyEvent = (event_id, eventDescription, start_string, end_string
         event_id: event_id, 
         event_start: start_string, 
         event_end: end_string,
-        event_description: eventDescription
+        event_description: eventDescription,
+        title: title,
+        location: location
       })
   }).then(response => response.json())
 }

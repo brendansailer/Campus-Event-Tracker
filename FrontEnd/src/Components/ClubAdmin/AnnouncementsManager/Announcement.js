@@ -28,6 +28,10 @@ export default function Announcement(props) {
   }
 
   const handleSubmit = (evt) => {
+    if(!announcementDescription) {
+      handleClose();
+      return;
+    }
     evt.preventDefault();
     modifyAnnouncement(announcementDescription, props.announcement_id).then((value) => {
         console.log(value);
