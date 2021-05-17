@@ -13,7 +13,7 @@ export default function Feed() {
   useEffect(() => {
     getDBUser(currentUser.get("username"), currentUser.get("email"))
       .then((user) => {
-        fetch('/clubsgrouped/topics/' + user.user_id, {
+        fetch('http://18.205.219.249:8001/clubsgrouped/topics/' + user.user_id, {
           method: 'GET',
           mode: 'cors',
           cache: 'no-cache',

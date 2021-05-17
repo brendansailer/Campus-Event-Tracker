@@ -1,5 +1,5 @@
 export const createEvent = (newEvent) => {
-    return fetch('/club/event/create', {
+    return fetch('http://18.205.219.249:8001/club/event/create', {
       method: 'POST', // *GET, POST, PUT, DELETE, etc.
       mode: 'cors', // no-cors, *cors, same-origin
       cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -20,8 +20,9 @@ export const createEvent = (newEvent) => {
         })
     }).then(response => response.json())
 }
+
 export const modifyEvent = (event_id, eventDescription, start_string, end_string, location, title) => {
-  return fetch('/club/event/modify', {
+  return fetch('http://18.205.219.249:8001/club/event/modify', {
     method: 'POST', // *GET, POST, PUT, DELETE, etc.
     mode: 'cors', // no-cors, *cors, same-origin
     cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -44,7 +45,7 @@ export const modifyEvent = (event_id, eventDescription, start_string, end_string
 }
 
 export const getClubEvents = (clubId) => {
-    return fetch('/club/event/' + clubId, {
+    return fetch('http://18.205.219.249:8001/club/event/' + clubId, {
       method: 'GET', // *GET, POST, PUT, DELETE, etc.
       mode: 'cors', // no-cors, *cors, same-origin
       cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -58,7 +59,7 @@ export const getClubEvents = (clubId) => {
 }
 
 export const deleteEvent = (eventId) => {
-  return fetch('/event/delete/' + eventId, {
+  return fetch('http://18.205.219.249:8001/event/delete/' + eventId, {
     method: 'DELETE', // *GET, POST, PUT, DELETE, etc.
     mode: 'cors', // no-cors, *cors, same-origin
     cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached

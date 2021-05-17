@@ -1,5 +1,5 @@
 export const createClub = (club_name, club_description, topic_id) => {
-    return fetch('/club/create', {
+    return fetch('http://18.205.219.249:8001/club/create', {
         method: 'POST', // *GET, POST, PUT, DELETE, etc.
         mode: 'cors', // no-cors, *cors, same-origin
         cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached

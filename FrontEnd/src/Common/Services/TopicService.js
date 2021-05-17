@@ -1,5 +1,5 @@
 export const getTopics = () => {
-    return fetch('/clubTopic', {
+    return fetch('http://18.205.219.249:8001/clubTopic', {
         method: 'GET', // *GET, POST, PUT, DELETE, etc.
         mode: 'cors', // no-cors, *cors, same-origin
         cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
