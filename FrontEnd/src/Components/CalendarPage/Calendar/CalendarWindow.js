@@ -7,7 +7,7 @@ export default function CalendarWindow() {
   const [events, setEvents] = useState([]);
   // var currentUser = getCurrentUser();
   useEffect(() => {
-    fetch('/event', {
+    fetch('http://18.205.219.249:8001/event', {
       method: 'GET', // *GET, POST, PUT, DELETE, etc.
       mode: 'cors', // no-cors, *cors, same-origin
       cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
