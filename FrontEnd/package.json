@@ -1,5 +1,5 @@
 {
-  "name": "react-app",
+  "name": "campus-calendar",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -16,10 +16,10 @@
     "moment": "^2.29.1",
     "parse": "^3.1.0",
     "react": "^17.0.1",
-    "react-bootstrap": "^1.6.0",
-    "react-datepicker": "^3.8.0",
     "react-big-calendar": "^0.33.2",
+    "react-bootstrap": "^1.6.0",
     "react-calendar": "^3.4.0",
+    "react-datepicker": "^3.8.0",
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
@@ -50,5 +50,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://3.210.165.177:8067"
+  "proxy": "http://localhost:5050"
 }

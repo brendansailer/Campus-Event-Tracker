@@ -22,8 +22,9 @@ const Nav = () => {
       <div className="nav-items">
         <h1 style={{ color: "#057BFE", paddingRight: "10px" }}>
           <span style={{ color: "#057BFE", paddingRight: "10px" }}>
-            eveNDts
+            Campus <br />CaleNDar 
           </span>
+          <br />
           <FontAwesomeIcon icon={faCalendarCheck} />
         </h1>
         {getCurrentUser() &&

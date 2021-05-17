@@ -7,7 +7,7 @@ export default function StandaloneEvent(props) {
   let history = useHistory();
 
   return (
-    <div className="event">
+    <div className="individual-event">
       {props.event_img && <img className="event-image" src={props.event_img} alt="profile"></img>}
       <div className="event-info">
         <h2 className="event-club">Title: {props.title}</h2>

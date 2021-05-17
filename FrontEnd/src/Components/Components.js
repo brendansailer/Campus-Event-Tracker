@@ -1,8 +1,6 @@
 import CalendarPageModule from "./CalendarPage/CalendarPage";
 import ExplorePageModule from "./ExplorePage/ExplorePage"
 import ProfilePageModule from "./ProfilePage/ProfilePage";
-import ProtectedUpdateProfilePageModule from "../Common/ProtectedRoutes/UpdateProfileRoute";
-import UpdateProfilePageModule from "./UpdateProfile/UpdateProfile";
 import AuthModule from "./Auth/Auth";
 import ProtectedHomeRouteModule from "../Common/ProtectedRoutes/ProtectedHomeRoute";
 import IndividualEventPage from "./IndividualEventPage/IndividualEventPage";
@@ -22,14 +20,6 @@ const Components = () => {
   return (
     <Router>
       <Switch>
-        <Route
-          path="/profile/:userId/update-auth"
-          component={ProtectedUpdateProfilePageModule}
-        />
-        <Route
-          path="/profile/:userId/update"
-          component={UpdateProfilePageModule}
-        />
         <Route path="/profile/:userId" component={ProfilePageModule} />
         <Route path="/explore/:userId" component={ExplorePageModule} />
         <Route path="/home-auth" component={ProtectedHomeRouteModule} />

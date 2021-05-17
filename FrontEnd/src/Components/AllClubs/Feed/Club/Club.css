@@ -1,19 +1,23 @@
 .club-subscribed{
-    border-radius: 15px;
-    border: 1px solid blue;
-    padding: 5px;
-    padding-top: 20px;
+    border-radius: 7px;
+    background-color: #202020;
+    padding: 10px;
     padding-bottom: 20px;
-    width: 200px;
+    width: 270px;
+    height: 120px;
+}
+
+.club-subscribed a {
+    color: #f0ad4e;
 }
 
 .club-unsubscribed{
-    border-radius: 15px;
-    border: 1px solid red;
-    padding: 5px;
-    padding-top: 20px;
+    border-radius: 7px;
+    background-color: #202020;
+    padding: 10px;
     padding-bottom: 20px;
-    width: 200px;
+    width: 270px;
+    height: 120px;
 }
 
 .club-name {
@@ -29,4 +33,11 @@
     font-family: sans-serif;
     color: white;
     text-align: center;
+}
+
+.club-tile {
+
+    flex:0 0;
+    height: 100%;
+    margin: 5px;
 }

@@ -1,7 +1,9 @@
-.event{
-    border-bottom: 1px solid grey;
+.individual-event{
     border-width: 75%;
     padding-top: 30px;
+    background-color: #202020;
+    border-radius: 7px;
+    padding-bottom: 10px;
 }
 
 .event-image {
@@ -60,7 +62,7 @@
 
 .rsvp-button button {
     margin-top: 10px;
-    width: 30%;
+    width: 100%;
 }
 
 .back-button {

@@ -20,12 +20,12 @@ function AllClubs() {
 
   //Html to be rendered for the AllClubs
   return (
-    <div className="page">
-      <div className="clubs-grid-container">
-        <div className="clubs-nav-container">
+    <div className="all-clubs-page-container">
+      <div className="all-clubs-grid-container">
+        <div className="all-clubs-nav-container">
           <Nav></Nav>
         </div>
-        <div className="clubs-feed-container">
+        <div className="all-clubs-feed-container">
           <ClubFeed></ClubFeed>
         </div>
       </div>
