@@ -14,7 +14,7 @@ function IndividualEventPage(props) {
   const [buttonPressed, setButtonPressed] = useState(false);
   const [userId, setUserId] = useState();
   useEffect(() => {
-    fetch('/event/' + eventId, {
+    fetch('http://18.205.219.249:8001/event/' + eventId, {
       method: 'GET',
       mode: 'cors',
       cache: 'no-cache',

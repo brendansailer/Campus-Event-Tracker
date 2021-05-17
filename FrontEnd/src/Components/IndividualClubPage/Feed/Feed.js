@@ -33,7 +33,7 @@ export default function Feed(props) {
     }, [currentUser, subscribed, clubId])
     
     useEffect(() => {
-      fetch('/club/event/' + clubId, {
+      fetch('http://18.205.219.249:8001/club/event/' + clubId, {
         method: 'GET',
         mode: 'cors',
         cache: 'no-cache',
@@ -49,7 +49,7 @@ export default function Feed(props) {
     }, [clubId]);
 
     useEffect(() => {
-      fetch('/club/' + clubId, {
+      fetch('http://18.205.219.249:8001/club/' + clubId, {
         method: 'GET',
         mode: 'cors',
         cache: 'no-cache',

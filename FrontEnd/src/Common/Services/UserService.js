@@ -39,7 +39,7 @@ export const updateUser = (id, changes) => {
 };
 
 export const createDBUser = (newUser) => {
-  return fetch('/login/create', {
+  return fetch('http://18.205.219.249:8001/login/create', {
     method: 'POST', // *GET, POST, PUT, DELETE, etc.
     mode: 'cors', // no-cors, *cors, same-origin
     cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -54,7 +54,7 @@ export const createDBUser = (newUser) => {
 }
 
 export const getDBUser = (username, email) => {
-  return fetch('/login', {
+  return fetch('http://18.205.219.249:8001/login', {
     method: 'POST', // *GET, POST, PUT, DELETE, etc.
     mode: 'cors', // no-cors, *cors, same-origin
     cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -70,7 +70,7 @@ export const getDBUser = (username, email) => {
 
 export const getUserRSVPs = (user_id) => {
   
-  return fetch('/event/subscribed/' + user_id, {
+  return fetch('http://18.205.219.249:8001/event/subscribed/' + user_id, {
     method: 'GET', // *GET, POST, PUT, DELETE, etc.
     mode: 'cors', // no-cors, *cors, same-origin
     cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -84,7 +84,7 @@ export const getUserRSVPs = (user_id) => {
 }
 
 export const createRSVP = (user_id, event_id, likelihood) => {
-  return fetch('/event/rsvp', {
+  return fetch('http://18.205.219.249:8001/event/rsvp', {
     method: 'POST', // *GET, POST, PUT, DELETE, etc.
     mode: 'cors', // no-cors, *cors, same-origin
     cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached

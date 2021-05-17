@@ -1,5 +1,5 @@
 export const getUserSubscriptions = (user_id) => {
-    return fetch('/membership/' + user_id, {
+    return fetch('http://18.205.219.249:8001/membership/' + user_id, {
         method: 'GET', // *GET, POST, PUT, DELETE, etc.
         mode: 'cors', // no-cors, *cors, same-origin
         cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -13,7 +13,7 @@ export const getUserSubscriptions = (user_id) => {
 }
 
 export const subscribeUserToClub = (user_id, club_id, rank = "0") => {
-    return fetch('/membership/create', {
+    return fetch('http://18.205.219.249:8001/membership/create', {
         method: 'POST', // *GET, POST, PUT, DELETE, etc.
         mode: 'cors', // no-cors, *cors, same-origin
         cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -28,7 +28,7 @@ export const subscribeUserToClub = (user_id, club_id, rank = "0") => {
 }
 
 export const deleteSubscription = (user_id, club_id) => {
-    return fetch('/membership/delete', {
+    return fetch('http://18.205.219.249:8001/membership/delete', {
         method: 'POST', // *GET, POST, PUT, DELETE, etc.
         mode: 'cors', // no-cors, *cors, same-origin
         cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached

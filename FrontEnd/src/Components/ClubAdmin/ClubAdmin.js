@@ -25,7 +25,7 @@ const ClubAdmin = (props) => {
   }
 
   useEffect(() => {
-    fetch('/club/' + props.match.params.clubId, {
+    fetch('http://18.205.219.249:8001/club/' + props.match.params.clubId, {
         method: 'GET',
         mode: 'cors',
         cache: 'no-cache',

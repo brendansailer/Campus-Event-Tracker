@@ -8,7 +8,7 @@ export default function Announcements(props) {
     let clubId = props.clubId; // Get the URL Parameter
     const [messages, setMesssages] = useState([]);
     useEffect(() => {
-      fetch('/club/announcement/' + clubId, {
+      fetch('http://18.205.219.249:8001/club/announcement/' + clubId, {
         method: 'GET',
         mode: 'cors',
         cache: 'no-cache',

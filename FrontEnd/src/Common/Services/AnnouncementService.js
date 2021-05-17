@@ -1,5 +1,5 @@
 export const createAnnouncement = (newAnnouncement) => {
-    return fetch('/club/announcement/create', {
+    return fetch('http://18.205.219.249:8001/club/announcement/create', {
       method: 'POST', // *GET, POST, PUT, DELETE, etc.
       mode: 'cors', // no-cors, *cors, same-origin
       cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -20,7 +20,7 @@ export const createAnnouncement = (newAnnouncement) => {
 }
 
 export const getClubAnnouncements = (clubId) => {
-  return fetch('/club/announcement/' + clubId, {
+  return fetch('http://18.205.219.249:8001/club/announcement/' + clubId, {
     method: 'GET', // *GET, POST, PUT, DELETE, etc.
     mode: 'cors', // no-cors, *cors, same-origin
     cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -34,7 +34,7 @@ export const getClubAnnouncements = (clubId) => {
 }
 
 export const deleteAnnouncement = (clubId) => {
-  return fetch('/announcement/delete/' + clubId, {
+  return fetch('http://18.205.219.249:8001/announcement/delete/' + clubId, {
     method: 'DELETE', // *GET, POST, PUT, DELETE, etc.
     mode: 'cors', // no-cors, *cors, same-origin
     cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -48,7 +48,7 @@ export const deleteAnnouncement = (clubId) => {
 }
 
 export const modifyAnnouncement = (ann_desc, ann_id) => {
-  return fetch('/club/announcement/modify', {
+  return fetch('http://18.205.219.249:8001/club/announcement/modify', {
     method: 'POST', // *GET, POST, PUT, DELETE, etc.
     mode: 'cors', // no-cors, *cors, same-origin
     cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
