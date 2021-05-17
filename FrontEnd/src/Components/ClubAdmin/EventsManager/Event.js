@@ -39,6 +39,10 @@ export default function Event(props) {
     evt.preventDefault();
     const start_string = getDateString(startDate);
     const end_string = getDateString(endDate);
+    if(!eventDescription || !location || !title) {
+      handleClose();
+      return;
+    }
 
     modifyEvent(props.event_id, eventDescription, start_string, end_string, location, title).then((value) => {
       console.log(value);
@@ -48,6 +52,7 @@ export default function Event(props) {
     setViewableLocation(location);
     setViewableStartDate(getPrettyDateString(startDate));
     setViewableEndDate(getPrettyDateString(endDate));
+    handleClose();
   }
 
   const handleClose = () => setShowModifyModal(false);
