@@ -20,8 +20,8 @@ function ExplorePage() {
 
   //Html to be rendered for the ExplorePage
   return (
-    <div className="page">
-      <div className="grid-container">
+    <div className="explore-page-container">
+      <div className="explore-grid-container">
         <div className="explore-nav-container">
           <Nav></Nav>
         </div>

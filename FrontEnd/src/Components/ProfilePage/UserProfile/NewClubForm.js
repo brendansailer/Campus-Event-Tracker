@@ -30,7 +30,7 @@ export default function NewClubForm(props) {
             type="text"
             id="bodyText"
             className="form-control club-text-desc"
-            maxLength="280"
+            maxLength="100"
             onChange={props.handleDescriptionUpdate}
             required
           />

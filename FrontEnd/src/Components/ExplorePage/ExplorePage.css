@@ -2,6 +2,7 @@
     height: 100%;
     padding-top: 10px;
     padding-bottom: 10px;
+    padding-right: 10px;
     overflow: auto;
 }
 
@@ -15,13 +16,14 @@
     padding: 10px;
 }
 
-.grid-container{
+.explore-grid-container{
     height: 100%;
+    width: 100%;
 }
 
 /*Media Query for Mobile Devices*/
 @media (max-width: 480px) {
-    .grid-container{
+    .explore-grid-container{
         display: grid;
         grid-template-rows: 130px auto;
     }
@@ -33,11 +35,11 @@
 
 /*Media Query for iPads & Tablets*/
 @media (min-width:481px) and (max-width: 730px) {
-      .page {
+    .explore-page-container {
           height: 100vh;
           width: 100vw;
       }
-    .grid-container{
+    .explore-grid-container{
         display: grid;
         grid-template-columns: 130px auto;
     }
@@ -47,51 +49,22 @@
     }
 }
 
-/*Media Query for smaller screens*/
-@media (min-width:731px) and (max-width: 975px) {
-      .page {
-          height: 100vh;
-          width: 100vw;
+/*Media Query for most screens*/
+@media (min-width:731px) {
+      .explore-page-container {
+        height: 100vh;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
       }
 
-    .grid-container{
+    .explore-grid-container{
         display: grid;
-        grid-template-columns: auto 575px;
-
+        grid-template-columns: 300px auto;
     }
 
     .explore-discover-container{
         display: none;
-    }
-}
-
-/*Media Query for medium*/
-@media (min-width:976px) and (max-width: 1200px) {
-      .page {
-          height: 100vh;
-          width: 100vw;
-      }
-    .grid-container{
-        display: grid;
-        grid-template-columns: auto 575px 325px;
-
-    }
-}
-
-
-/*CSS Media Query for larger screens */
-@media (min-width:1201px) {
-    .page{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        width: 100vw;
-    }
-
-    .grid-container{
-        display: grid;
-        grid-template-columns: 300px 575px 325px;
-    
     }
 }

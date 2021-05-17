@@ -4,17 +4,21 @@
 }
 
 .header{
+    padding: 10px;
     margin: auto;
     text-align: center;
 }
 
 .big-feed{
-    background-color: #1F1F1F;
     display: flex;
     flex-direction: column;
     height: 100%;
+    width: 100%;
+    padding: 10px;
     flex-wrap: wrap;
     justify-content: flex-start;
     align-items: stretch;
     align-content: flex-start;
+    border-radius: 7px;
+    overflow: scroll;
 }

@@ -16,8 +16,8 @@ function IndividualClubPage(props) {
 
   //Html to be rendered for the IndividualClubPage
   return (
-    <div className="page">
-      <div className="grid-container">
+    <div className="individual-club-page">
+      <div className="individual-club-grid-container">
         <div className="club-nav-container">
           <Nav></Nav>
         </div>

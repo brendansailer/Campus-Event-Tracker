@@ -3,6 +3,12 @@
     border-width: 75%;
     padding-bottom: 30px;
     padding-top: 30px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.new-event h4 {
+    padding-top: 10px;
 }
 
 .event-image {
@@ -64,6 +70,10 @@ textarea {
 select,
 textarea {
     color: white;
+}
+
+.form-text:focus {
+    color:white;
 }
 
 .event-submit-button {
