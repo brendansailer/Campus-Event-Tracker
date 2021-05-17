@@ -3,12 +3,14 @@ import { getCurrentUser } from "../../../Common/Services/AuthService";
 import { deleteSubscription, getUserSubscriptions } from "../../../Common/Services/SubscriptionService";
 import { getDBUser } from "../../../Common/Services/UserService";
 import { useEffect, useState } from "react";
-import SubscriptionTile from "./SubscriptionTile"
+import { useHistory } from "react-router-dom";
+import SubscriptionTile from "./SubscriptionTile";
 
 export default function UserSubscriptions(props) {
   const [subscriptions, setSubscriptions] = useState([]);
   const [dbUser, setDbUser] = useState({});
   const currentUser = getCurrentUser();
+  let history = useHistory();
 
   useEffect(() => {
     getDBUser(currentUser.get("username"), currentUser.get("email"))
@@ -30,7 +32,7 @@ export default function UserSubscriptions(props) {
   };
 
   const manageClub = (club_id) => () => {
-    window.location.href='/admin/' + club_id;
+    history.push('/admin/' + club_id);
   };
 
   return (
