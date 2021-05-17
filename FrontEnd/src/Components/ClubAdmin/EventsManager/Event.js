@@ -15,11 +15,15 @@ export default function Event(props) {
   const [show, setShow] = useState(false);
   const [showModifyModal, setShowModifyModal] = useState(false);
   const [eventDescription, setEventDescription] = useState();
+  const [title, setTitle] = useState();
+  const [location, setLocation] = useState();
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   const [viewableEventDescription, setViewableEventDescription] = useState(props.description);
   const [viewableStartDate, setViewableStartDate] = useState(props.event_start);
   const [viewableEndDate, setViewableEndDate] = useState(props.event_end);
+  const [viewableTitle, setViewableTitle] = useState(props.title);
+  const [viewableLocation, setViewableLocation] = useState(props.location);
 
   function deleteEventHandler(e) {
     e.preventDefault();
@@ -36,10 +40,12 @@ export default function Event(props) {
     const start_string = getDateString(startDate);
     const end_string = getDateString(endDate);
 
-    modifyEvent(props.event_id, eventDescription, start_string, end_string).then((value) => {
+    modifyEvent(props.event_id, eventDescription, start_string, end_string, location, title).then((value) => {
       console.log(value);
     });
     setViewableEventDescription(eventDescription);
+    setViewableTitle(title);
+    setViewableLocation(location);
     setViewableStartDate(getPrettyDateString(startDate));
     setViewableEndDate(getPrettyDateString(endDate));
   }
@@ -53,6 +59,18 @@ export default function Event(props) {
           <ModalTitle>Edit Announcement</ModalTitle>
         </ModalHeader>
         <ModalBody>
+        <h4>Event Title: </h4> 
+          <input
+            name='sample'
+            type='text'
+            onChange={e => setTitle(e.target.value)}
+          />
+        <h4>Event Location: </h4> 
+          <input
+            name='sample'
+            type='text'
+            onChange={e => setLocation(e.target.value)}
+          />
         <h4>Event Description: </h4> 
           <input
             name='sample'
@@ -94,7 +112,8 @@ export default function Event(props) {
       <div className="event-info">
         <p className="event-time">Event End: {viewableEndDate}</p>
       </div>
-      <h4 className="event-title">{props.title}</h4>
+      <h4 className="event-title">{viewableTitle}</h4>
+      <p className="event-location">{viewableLocation}</p>
       <p className="event-text">{viewableEventDescription}</p>
     </div>
   );
