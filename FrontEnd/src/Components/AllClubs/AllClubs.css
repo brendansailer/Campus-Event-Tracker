@@ -1,27 +1,31 @@
-.clubs-feed-container{
+.all-clubs-container{
     height: 100%;
+    width: 100%;
     padding-top: 10px;
     padding-bottom: 10px;
+    padding-right: 10px;
     overflow: auto;
 }
 
-.clubs-nav-container {
+.all-clubs-nav-container {
     height: 100%;
     padding: 10px;
 }
 
-.clubs-grid-container{
+.all-clubs-grid-container{
     height: 100%;
+    /* width: 100%; */
+    overflow: auto;
 }
 
 /*Media Query for Mobile Devices*/
 @media (max-width: 480px) {
-    .grid-container{
+    .all-clubs-grid-container{
         display: grid;
         grid-template-rows: 130px auto;
     }
 
-    .clubs-grid-container{
+    .home-discover-container{
         display: none;
     }
 }
@@ -32,10 +36,13 @@
           height: 100vh;
           width: 100vw;
       }
-
-    .clubs-grid-container{
+    .all-clubs-grid-container{
         display: grid;
         grid-template-columns: 130px auto;
+    }
+
+    .home-discover-container{
+        display: none;
     }
 }
 
@@ -46,9 +53,14 @@
           width: 100vw;
       }
 
-    .clubs-grid-container{
+    .all-clubs-grid-container{
         display: grid;
         grid-template-columns: 300px auto;
+
+    }
+
+    .home-discover-container{
+        display: none;
     }
 }
 
@@ -58,10 +70,9 @@
           height: 100vh;
           width: 100vw;
       }
-
-    .club-grid-container{
+    .all-clubs-grid-container{
         display: grid;
-        grid-template-columns: 300px 800px;
+        grid-template-columns: 300px auto;
 
     }
 }
@@ -69,7 +80,7 @@
 
 /*CSS Media Query for larger screens */
 @media (min-width:1201px) {
-    .page{
+    .all-clubs-page-container {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -77,8 +88,11 @@
         width: 100vw;
     }
 
-    .clubs-grid-container{
+    .all-clubs-grid-container{
         display: grid;
         grid-template-columns: 300px 800px;
+    }
+    .home-discover-container{
+        display: none;
     }
 }

@@ -8,7 +8,7 @@ import { subscribeUserToClub } from "../../../Common/Services/SubscriptionServic
 export default function NewClub(props) {
   const [clubName, setClubName] = useState("");
   const [clubDescription, setClubDescription] = useState("");
-  const [characterCount, setCharacterCount] = useState(280);
+  const [characterCount, setCharacterCount] = useState(100);
   const [topics, setTopics] = useState([]);
   const [selectedTopic, setSelectedTopic] = useState();
 
@@ -20,7 +20,7 @@ export default function NewClub(props) {
   const handleDescriptionUpdate = (event) => {
     event.preventDefault();
     setClubDescription(event.target.value);
-    setCharacterCount(280 - event.target.value.length);
+    setCharacterCount(100 - event.target.value.length);
   };
 
   const handleTopicSelect = (event) => {

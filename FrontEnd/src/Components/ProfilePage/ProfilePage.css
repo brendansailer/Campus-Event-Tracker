@@ -20,6 +20,10 @@
     height: 100vh;
 }
 
+.profile-grid-container{
+    height: 100%;
+    width: 100%;
+}
 
 /*Media Query for Mobile Devices*/
 @media (max-width: 875px) {
@@ -48,6 +52,6 @@
 
     .profile-grid-container {
         display: grid;
-        grid-template-columns: 300px 575px;
+        grid-template-columns: 300px auto;
     }
 }

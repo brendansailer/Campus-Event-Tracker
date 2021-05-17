@@ -84,13 +84,13 @@ export default function Feed(props) {
         </div>
       </div>
       {events && events.length === 0 ? 
-        <div className="feed">
+        <div className="individual-club-feed">
           <p className="feed-text">No Events</p>
           <p className="feed-text-small">Check Back Later</p>
           <p className="feed-text-small">Tell a Club Admin to Post Some!</p><br/><br/>
         </div>
         : 
-        <div className="feed">
+        <div className="individual-club-feed">
           <div className="event-info-container">
             {events.map((event) => (
               <Event

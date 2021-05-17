@@ -15,6 +15,7 @@ def get_events():
             SELECT e.event_id, e.club_id, e.event_start, e.event_end, e.event_description, e.img_url, c.club_name, e.location, e.title
             FROM appevent e
             JOIN club c on c.club_id = e.club_id
+            ORDER BY e.event_start
           """
 
     cur.execute(sql)
@@ -130,6 +131,7 @@ def get_club_events(user_id):
              FROM appevent e
              JOIN membership m on m.club_id = e.club_id
              JOIN club c on c.club_id = e.club_id
+             ORDER BY e.event_start
              WHERE m.user_id = :user_id
         """
      
