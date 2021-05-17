@@ -52,6 +52,7 @@ const ClubAdmin = (props) => {
   }, [props.match.params.clubId, dbUser]);
 
   useEffect(() => {
+    setOption("create_event")
     getDBUser(currentUser.get("username"), currentUser.get("email"))
       .then((user) => {
         setDbUser(user.user_id);
