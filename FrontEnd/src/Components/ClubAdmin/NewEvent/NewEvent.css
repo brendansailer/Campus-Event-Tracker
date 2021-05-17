@@ -45,3 +45,27 @@
     margin-left: 50px;
     font-family: sans-serif;
 }
+
+.form-text{
+    background-color: #202020;
+}
+
+.form-text:focus {
+    background-color: #202020;
+}
+
+.form-text,
+select,
+textarea {
+    color: white;
+}
+
+.form-text,
+select,
+textarea {
+    color: white;
+}
+
+.event-submit-button {
+    margin-top: 25px;
+}

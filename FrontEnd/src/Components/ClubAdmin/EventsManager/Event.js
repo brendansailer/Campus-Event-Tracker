@@ -1,6 +1,5 @@
 import React from "react";
 import "./Event.css";
-import { Link } from "react-router-dom";
 import { deleteEvent, modifyEvent } from "../../../Common/Services/EventService";
 import { getDateString, getPrettyDateString } from "../../../Common/Services/DateService";
 import { useState } from "react";
@@ -95,8 +94,8 @@ export default function Event(props) {
       <div className="event-info">
         <p className="event-time">Event End: {viewableEndDate}</p>
       </div>
-      <p className="event-text">Description: {viewableEventDescription}</p>
-      <Link className="event-link" to={"/event/" + props.event_id}> Go to event page </Link>
+      <h4 className="event-title">{props.title}</h4>
+      <p className="event-text">{viewableEventDescription}</p>
     </div>
   );
 }
