@@ -36,6 +36,7 @@ const NewAnnouncement = (props) => {
               <input
               name='sample'
               type='text'
+              className="form-control club-text-name"
               onChange={e => setAnnouncementDescription(e.target.value)}
               />
               <br />
@@ -45,9 +46,10 @@ const NewAnnouncement = (props) => {
                 onChange={date => setEndDate(date)}
                 timeInputLabel="Time:"
                 showTimeInput
+                className="form-control club-text-name"
               />
               <br />
-              <Button variant="outline-warning" onClick={handleSubmit}>Create Announcement</Button>
+              <Button className="announcement-submit-button" variant="outline-warning" onClick={handleSubmit}>Create Announcement</Button>
             </form>
     </div>
   );
