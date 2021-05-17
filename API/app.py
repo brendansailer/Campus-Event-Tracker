@@ -6,8 +6,10 @@ from routes.event_routes import event_api
 from routes.club_routes import club_api
 from routes.topic_routes import topic_api
 from routes.membership_routes import membership_api
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app, supports_credentials=True)
 
 # TODO - Add more Blueprints below (This allows us to have routes in many different files)
 app.register_blueprint(main_api)
@@ -18,5 +20,5 @@ app.register_blueprint(topic_api)
 app.register_blueprint(membership_api)
 
 if __name__ == '__main__':
-    service_port = port=os.environ.get('PORT', '5050')
+    service_port = port=os.environ.get('PORT', '8001')
     app.run(host='0.0.0.0', port= int(service_port) )
